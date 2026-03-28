@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bollens Web — Professionele websites voor kleine bedrijven in Antwerpen. Betaalbaar, modern en mobiel-vriendelijk. Vanaf €249.">
+  <title>bollensweb</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       BOLLENS WEB — All-in-one
+       Premium light theme
+    ============================================ */
+    :root {
+      --bg-base: #faf9f7;
+      --bg-elevated: #ffffff;
+      --bg-floating: #f4f2ef;
+      --bg-card: #ffffff;
+      --bg-dark: #1a1a2e;
+      --text-primary: #1a1a2e;
+      --text-secondary: #5c5c72;
+      --text-muted: #9090a4;
+      --accent: #c2703e;
+      --accent-dim: #a8602f;
+      --accent-light: #f5e6da;
+      --accent-glow: rgba(194,112,62,0.08);
+      --border: rgba(0,0,0,0.06);
+      --border-hover: rgba(0,0,0,0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --shadow-card: 0 1px 3px rgba(26,26,46,0.04), 0 6px 24px rgba(26,26,46,0.06);
+      --shadow-elevated: 0 2px 8px rgba(26,26,46,0.06), 0 12px 48px rgba(26,26,46,0.08);
+      --shadow-accent: 0 4px 20px rgba(194,112,62,0.1), 0 1px 4px rgba(194,112,62,0.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background: var(--bg-base);
+      overflow-x: hidden;
+    }
+    h1,h2,h3,h4 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--text-primary);
+    }
+    h1 { font-size: clamp(2.4rem,5vw,4rem); }
+    h2 { font-size: clamp(1.8rem,3.5vw,2.8rem); }
+    h3 { font-size: clamp(1.3rem,2.5vw,1.7rem); }
+    p { color: var(--text-secondary); max-width: 65ch; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-dim); }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* Grain */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 9999;
+      pointer-events: none; opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 200px;
+    }
+
+    /* Layout */
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 100px 0; }
+    .section-label {
+      font-family: var(--font-body); font-size: 0.8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent);
+      margin-bottom: 12px; display: block;
+    }
+    .accent { color: var(--accent); }
+    .divider { width: 60px; height: 3px; background: var(--accent); border-radius: 3px; margin: 24px 0; }
+
+    /* Page visibility */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
+      padding: 14px 32px; border-radius: var(--radius-sm); border: none;
+      cursor: pointer; transform: translateZ(0);
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, background-color 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px) scale(1.02); }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .btn:active { transform: translateY(0) scale(0.98); }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: var(--shadow-accent); }
+    .btn-primary:hover { background: var(--accent-dim); color: #fff; box-shadow: 0 6px 32px rgba(194,112,62,0.18); }
+    .btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--border-hover); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+
+    /* Nav */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 24px;
+      background: rgba(250,249,247,0.88);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; height: 72px;
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; cursor: pointer; transition: opacity 0.2s ease; }
+    .nav-logo:hover { opacity: 0.75; }
+    .logo-bollens { font-family: var(--font-display); font-size: 1.5rem; color: var(--text-primary); letter-spacing: -0.5px; }
+    .logo-divider { width: 2.5px; height: 20px; border-radius: 2px; background: var(--accent); opacity: 0.45; margin: 0 3px; }
+    .logo-web { font-family: var(--font-body); font-size: 1.5rem; font-weight: 600; color: var(--accent); letter-spacing: -0.5px; }
+    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .nav-links a {
+      font-size: 0.9rem; font-weight: 500; color: var(--text-secondary);
+      padding: 8px 16px; border-radius: var(--radius-sm);
+      transition: color 0.2s ease, background-color 0.2s ease;
+      text-decoration: none; cursor: pointer;
+    }
+    .nav-links a:hover { color: var(--text-primary); background: rgba(0,0,0,0.04); }
+    .nav-links a.active { color: var(--accent); background: rgba(0,0,0,0.04); }
+    .nav-cta {
+      background: var(--accent) !important; color: #fff !important; font-weight: 600 !important;
+      padding: 8px 20px !important; border-radius: var(--radius-sm) !important;
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease !important;
+    }
+    .nav-cta:hover { transform: translateY(-1px) scale(1.03); opacity: 0.9; background: var(--accent) !important; }
+    .nav-cta.active { background: var(--accent-dim) !important; color: #fff !important; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+        background: var(--bg-base); flex-direction: column; padding: 32px 24px; gap: 4px;
+        transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      }
+      .nav-links.open { transform: translateX(0); }
+      .nav-links a { font-size: 1.1rem; padding: 14px 16px; width: 100%; }
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 32px;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .card:hover { transform: translateY(-4px); border-color: var(--border-hover); box-shadow: var(--shadow-card); }
+    .icon-box {
+      width: 52px; height: 52px; border-radius: var(--radius-sm);
+      background: var(--accent-light); display: flex; align-items: center;
+      justify-content: center; font-size: 1.4rem; margin-bottom: 16px; flex-shrink: 0;
+    }
+
+    /* Grids */
+    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 32px; align-items: center; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+    @media (max-width: 968px) { .grid-4 { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 768px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .grid-4 { grid-template-columns: 1fr; }
+      .section { padding: 64px 0; }
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding-top: 72px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -20%; right: -10%; width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(194,112,62,0.06) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -20%; left: -10%; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(26,26,46,0.03) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-light); border: 1px solid rgba(194,112,62,0.15);
+      color: var(--accent); font-size: 0.8rem; font-weight: 600;
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; letter-spacing: 0.03em;
+    }
+    .hero h1 { margin-bottom: 24px; }
+    .hero p { font-size: 1.15rem; margin-bottom: 40px; max-width: 560px; }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+    .scroll-indicator .arrow {
+      width: 24px; height: 24px; border-right: 2px solid var(--text-muted);
+      border-bottom: 2px solid var(--text-muted); transform: rotate(45deg);
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @media (max-width: 768px) { .scroll-indicator { display: none; } .hero { min-height: auto; padding: 120px 0 80px; } }
+
+    /* Stats bar */
+    .stats-bar { background: var(--bg-dark); color: #fff; padding: 56px 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; text-align: center; }
+    .stat-number { font-family: var(--font-display); font-size: 2.4rem; color: var(--accent); display: block; }
+    .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+    @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
+
+    /* Page header */
+    .page-header { padding: 140px 0 80px; text-align: center; position: relative; overflow: hidden; }
+    .page-header::before {
+      content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(194,112,62,0.06) 0%, transparent 70%); pointer-events: none;
+    }
+    .page-header h1, .page-header p { position: relative; z-index: 1; }
+    .page-header p { margin: 0 auto; font-size: 1.1rem; }
+    @media (max-width: 768px) { .page-header { padding: 110px 0 56px; } }
+
+    /* Pricing */
+    .pricing-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 40px 32px; position: relative;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .pricing-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-elevated); }
+    .pricing-card.featured { border-color: var(--accent); box-shadow: var(--shadow-accent); }
+    .pricing-card.featured::before {
+      content: 'Populairst'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: #fff; font-size: 0.75rem; font-weight: 700;
+      padding: 4px 16px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .pricing-name { font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; }
+    .pricing-price { font-family: var(--font-display); font-size: 3rem; color: var(--text-primary); margin-bottom: 4px; line-height: 1; }
+    .pricing-period { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 28px; }
+    .pricing-features { list-style: none; margin-bottom: 32px; display: flex; flex-direction: column; gap: 12px; }
+    .pricing-features li { font-size: 0.92rem; color: var(--text-secondary); display: flex; align-items: center; gap: 10px; }
+    .pricing-features li::before { content: '\2713'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+    /* Footer */
+    .footer { background: var(--bg-dark); color: rgba(255,255,255,0.85); padding: 64px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand p { font-size: 0.9rem; margin-top: 12px; line-height: 1.7; color: rgba(255,255,255,0.5); }
+    .footer h4 { font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 0.9rem; color: rgba(255,255,255,0.5); transition: color 0.2s ease, transform 0.2s ease; display: inline-block; cursor: pointer; }
+    .footer-links a:hover { color: var(--accent); transform: translateX(4px); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; color: rgba(255,255,255,0.3); }
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { opacity: 0; transform: translateY(24px); animation: fadeInUp 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+    .fade-in-d1 { animation-delay: 0.1s; }
+    .fade-in-d2 { animation-delay: 0.2s; }
+    .fade-in-d3 { animation-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" onclick="showPage('home')">
+        <span class="logo-bollens">bollens</span><span class="logo-divider"></span><span class="logo-web">web</span>
+      </a>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a id="nav-home" class="active" onclick="showPage('home')">Home</a></li>
+        <li><a id="nav-diensten" onclick="showPage('diensten')">Diensten</a></li>
+        <li><a id="nav-over" onclick="showPage('over')">Over mij</a></li>
+        <li><a id="nav-contact" class="nav-cta" onclick="showPage('contact')">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HOME ===== -->
+  <div id="page-home" class="page active">
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge fade-in">📍 Antwerpen, België</div>
+          <h1 class="fade-in fade-in-d1">Een professionele website<br>voor <span class="accent">jouw bedrijf</span></h1>
+          <p class="fade-in fade-in-d2">Ik ontwerp moderne, snelle en mobiel-vriendelijke websites die jouw bedrijf online laten groeien. Persoonlijke aanpak, scherpe prijzen, en resultaat dat telt.</p>
+          <div class="hero-buttons fade-in fade-in-d3">
+            <a onclick="showPage('diensten')" class="btn btn-primary">Bekijk pakketten →</a>
+            <a onclick="showPage('contact')" class="btn btn-secondary">Neem contact op</a>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator"><span>Scroll</span><div class="arrow"></div></div>
+    </section>
+
+    <section class="stats-bar">
+      <div class="container">
+        <div class="stats-grid">
+          <div><span class="stat-number">23</span><span class="stat-label">Tevreden klanten</span></div>
+          <div><span class="stat-number">€249</span><span class="stat-label">Vanaf prijs</span></div>
+          <div><span class="stat-number">100%</span><span class="stat-label">Mobiel-vriendelijk</span></div>
+          <div><span class="stat-number">7/7</span><span class="stat-label">Bereikbaar</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid-2">
+          <div>
+            <span class="section-label">Over mij</span>
+            <h2 style="margin-bottom: 20px;">Ik ben Louis Bollens</h2>
+            <div class="divider"></div>
+            <p style="margin-bottom: 20px;">Als webdesigner uit Antwerpen help ik kleine bedrijven met een sterke online aanwezigheid. Geen ingewikkelde processen, geen verborgen kosten — gewoon een website die werkt en er professioneel uitziet.</p>
+            <p style="margin-bottom: 32px;">Ik geloof dat elke ondernemer een mooie website verdient, ongeacht het budget. Daarom bied ik betaalbare pakketten aan zonder in te boeten op kwaliteit.</p>
+            <a onclick="showPage('over')" class="btn btn-secondary">Meer over mij →</a>
+          </div>
+          <div>
+            <div style="background: var(--bg-floating); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; position: relative;">
+              <img src="https://placehold.co/560x400/f4f2ef/c2703e?text=Louis+Bollens" alt="Louis Bollens" style="width: 100%; height: 400px; object-fit: cover;">
+              <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,46,0.4) 0%, transparent 50%);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-floating); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 56px;">
+          <span class="section-label">Waarom Bollens Web</span>
+          <h2 style="margin-bottom: 16px;">Waarom kiezen voor mij?</h2>
+          <p style="margin: 0 auto;">Ik lever kwaliteit, snelheid en persoonlijke service — alles wat een groot bureau biedt, maar dan betaalbaar en met een persoonlijke touch.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card"><div class="icon-box">💰</div><h3>Betaalbare prijzen</h3><p style="margin-top: 10px; font-size: 0.92rem;">Professionele websites vanaf slechts €249. Geen verborgen kosten, geen verrassingen achteraf.</p></div>
+          <div class="card"><div class="icon-box">📱</div><h3>Mobiel-vriendelijk</h3><p style="margin-top: 10px; font-size: 0.92rem;">Elke website is volledig responsief en ziet er perfect uit op elk apparaat — telefoon, tablet of desktop.</p></div>
+          <div class="card"><div class="icon-box">⚡</div><h3>Snel opgeleverd</h3><p style="margin-top: 10px; font-size: 0.92rem;">Geen weken wachten. Jouw website is binnen 5-10 werkdagen klaar om online te gaan.</p></div>
+          <div class="card"><div class="icon-box">🎨</div><h3>Op maat design</h3><p style="margin-top: 10px; font-size: 0.92rem;">Geen templates. Elke website wordt uniek ontworpen zodat jouw bedrijf eruit springt.</p></div>
+          <div class="card"><div class="icon-box">🔍</div><h3>SEO geoptimaliseerd</h3><p style="margin-top: 10px; font-size: 0.92rem;">Jouw website wordt gevonden op Google. Basis SEO is altijd inbegrepen bij elk pakket.</p></div>
+          <div class="card"><div class="icon-box">🤝</div><h3>Persoonlijk contact</h3><p style="margin-top: 10px; font-size: 0.92rem;">Je communiceert altijd rechtstreeks met mij. Geen tussenpersonen, geen wachttijden.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="text-align: center;">
+      <div class="container">
+        <span class="section-label">Klaar om te starten?</span>
+        <h2 style="margin-bottom: 16px;">Laat jouw bedrijf online groeien</h2>
+        <p style="margin: 0 auto 40px;">Vraag vandaag nog een vrijblijvende offerte aan en ontdek wat ik voor jouw bedrijf kan betekenen.</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a onclick="showPage('contact')" class="btn btn-primary">Gratis offerte aanvragen →</a>
+          <a onclick="showPage('diensten')" class="btn btn-secondary">Bekijk pakketten</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="nav-logo" onclick="showPage('home')" style="cursor:pointer;"><span class="logo-bollens">bollens</span><span class="logo-divider"></span><span class="logo-web">web</span></a>
+            <p>Professionele websites voor kleine bedrijven in Antwerpen. Betaalbaar, modern en altijd mobiel-vriendelijk.</p>
+          </div>
+          <div><h4>Pagina's</h4><ul class="footer-links"><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('diensten')">Diensten</a></li><li><a onclick="showPage('over')">Over mij</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+          <div><h4>Diensten</h4><ul class="footer-links"><li><a onclick="showPage('diensten')">Website design</a></li><li><a onclick="showPage('diensten')">Webshops</a></li><li><a onclick="showPage('diensten')">SEO optimalisatie</a></li><li><a onclick="showPage('diensten')">Hosting</a></li></ul></div>
+          <div><h4>Contact</h4><ul class="footer-links"><li><a href="mailto:bollensluigi@gmail.com">bollensluigi@gmail.com</a></li><li><a href="tel:+32468373437">0468 37 34 37</a></li><li><span style="color:rgba(255,255,255,0.4);font-size:0.9rem;">Antwerpen, België</span></li></ul></div>
+        </div>
+        <div class="footer-bottom"><span>© 2026 Bollens Web. Alle rechten voorbehouden.</span><span>Ontworpen met ♥ in Antwerpen</span></div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===== DIENSTEN ===== -->
+  <div id="page-diensten" class="page">
+
+    <section class="page-header">
+      <span class="section-label">Diensten & Prijzen</span>
+      <h1>Wat ik voor jou <span class="accent">kan doen</span></h1>
+      <p>Professionele websites voor kleine bedrijven — op maat gemaakt, snel opgeleverd en altijd tegen een eerlijke prijs.</p>
+    </section>
+
+    <section class="section" style="padding-top: 40px;">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 56px;">
+          <span class="section-label">Standaard inbegrepen</span>
+          <h2 style="margin-bottom: 16px;">Wat zit er altijd bij?</h2>
+          <p style="margin: 0 auto;">Bij elk pakket krijg je een volledige set aan features die jouw website professioneel en vindbaar maken.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card" style="text-align:center;"><div class="icon-box" style="margin:0 auto 16px;">🎨</div><h3>Professioneel design</h3><p style="margin-top:10px;font-size:0.9rem;">Uniek, op maat ontwerp dat past bij jouw merk en doelgroep. Geen standaard templates.</p></div>
+          <div class="card" style="text-align:center;"><div class="icon-box" style="margin:0 auto 16px;">📱</div><h3>Mobiel-vriendelijk</h3><p style="margin-top:10px;font-size:0.9rem;">Responsief design dat er perfect uitziet op elk scherm — van smartphone tot desktop.</p></div>
+          <div class="card" style="text-align:center;"><div class="icon-box" style="margin:0 auto 16px;">🔍</div><h3>SEO optimalisatie</h3><p style="margin-top:10px;font-size:0.9rem;">Basis zoekmachineoptimalisatie zodat jouw bedrijf gevonden wordt op Google.</p></div>
+          <div class="card" style="text-align:center;"><div class="icon-box" style="margin:0 auto 16px;">📬</div><h3>Contactformulier</h3><p style="margin-top:10px;font-size:0.9rem;">Een professioneel contactformulier zodat klanten je gemakkelijk kunnen bereiken.</p></div>
+          <div class="card" style="text-align:center;"><div class="icon-box" style="margin:0 auto 16px;">🌐</div><h3>Hosting eerste jaar</h3><p style="margin-top:10px;font-size:0.9rem;">Het eerste jaar hosting is inbegrepen. Geen extra kosten om je site online te zetten.</p></div>
+          <div class="card" style="text-align:center;"><div class="icon-box" style="margin:0 auto 16px;">⚡</div><h3>Snelle laadtijd</h3><p style="margin-top:10px;font-size:0.9rem;">Geoptimaliseerde code voor maximale snelheid en de beste gebruikerservaring.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-floating); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 56px;">
+          <span class="section-label">Pakketten</span>
+          <h2 style="margin-bottom: 16px;">Kies het pakket dat bij jou past</h2>
+          <p style="margin: 0 auto;">Transparante prijzen, geen verborgen kosten.</p>
+        </div>
+        <div class="grid-3">
+          <div class="pricing-card">
+            <div class="pricing-name">Starter</div>
+            <div class="pricing-price">€249</div>
+            <div class="pricing-period">eenmalig</div>
+            <ul class="pricing-features">
+              <li>One-page website</li><li>Mobiel-vriendelijk design</li><li>Contactformulier</li><li>Basis SEO</li><li>Hosting eerste jaar inbegrepen</li><li>Oplevering binnen 5 werkdagen</li>
+            </ul>
+            <a onclick="showPage('contact')" class="btn btn-secondary" style="width:100%;justify-content:center;">Offerte aanvragen</a>
+          </div>
+          <div class="pricing-card featured">
+            <div class="pricing-name">Professional</div>
+            <div class="pricing-price">€349</div>
+            <div class="pricing-period">eenmalig</div>
+            <ul class="pricing-features">
+              <li>Multi-page website (tot 5 pagina's)</li><li>Mobiel-vriendelijk design</li><li>SEO optimalisatie</li><li>Google Maps integratie</li><li>Contactformulier</li><li>Hosting eerste jaar inbegrepen</li><li>Oplevering binnen 7 werkdagen</li>
+            </ul>
+            <a onclick="showPage('contact')" class="btn btn-primary" style="width:100%;justify-content:center;">Offerte aanvragen →</a>
+          </div>
+          <div class="pricing-card">
+            <div class="pricing-name">Business</div>
+            <div class="pricing-price">€499</div>
+            <div class="pricing-period">eenmalig</div>
+            <ul class="pricing-features">
+              <li>Alles van Professional</li><li>Webshop functionaliteit</li><li>Of boekingssysteem</li><li>Uitgebreide SEO</li><li>Social media integratie</li><li>Hosting eerste jaar inbegrepen</li><li>Oplevering binnen 10 werkdagen</li>
+            </ul>
+            <a onclick="showPage('contact')" class="btn btn-secondary" style="width:100%;justify-content:center;">Offerte aanvragen</a>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:48px;"><p style="font-size:0.9rem;margin:0 auto;">Iets anders nodig? <a onclick="showPage('contact')" style="font-weight:600;cursor:pointer;">Neem contact op</a> voor een offerte op maat.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 56px;">
+          <span class="section-label">Werkwijze</span>
+          <h2 style="margin-bottom: 16px;">Hoe werkt het?</h2>
+          <p style="margin: 0 auto;">In vier eenvoudige stappen van idee naar een live website.</p>
+        </div>
+        <div class="grid-4">
+          <div class="card" style="text-align:center;"><div style="font-family:var(--font-display);font-size:2.5rem;color:var(--accent);opacity:0.3;margin-bottom:8px;">01</div><h3 style="font-size:1.1rem;">Kennismaking</h3><p style="margin-top:8px;font-size:0.88rem;">We bespreken jouw wensen, doelgroep en doelen via telefoon of e-mail.</p></div>
+          <div class="card" style="text-align:center;"><div style="font-family:var(--font-display);font-size:2.5rem;color:var(--accent);opacity:0.3;margin-bottom:8px;">02</div><h3 style="font-size:1.1rem;">Ontwerp</h3><p style="margin-top:8px;font-size:0.88rem;">Ik maak een uniek ontwerp op basis van jouw huisstijl en voorkeuren.</p></div>
+          <div class="card" style="text-align:center;"><div style="font-family:var(--font-display);font-size:2.5rem;color:var(--accent);opacity:0.3;margin-bottom:8px;">03</div><h3 style="font-size:1.1rem;">Ontwikkeling</h3><p style="margin-top:8px;font-size:0.88rem;">De website wordt gebouwd, getest en geoptimaliseerd voor alle apparaten.</p></div>
+          <div class="card" style="text-align:center;"><div style="font-family:var(--font-display);font-size:2.5rem;color:var(--accent);opacity:0.3;margin-bottom:8px;">04</div><h3 style="font-size:1.1rem;">Lancering</h3><p style="margin-top:8px;font-size:0.88rem;">Na jouw goedkeuring gaat de site live. Inclusief hosting setup en begeleiding.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="text-align:center;background:var(--bg-floating);border-top:1px solid var(--border);">
+      <div class="container">
+        <span class="section-label">Klaar om te starten?</span>
+        <h2 style="margin-bottom:16px;">Vraag een vrijblijvende offerte aan</h2>
+        <p style="margin:0 auto 40px;">Vertel me over jouw project en ik stuur je binnen 24 uur een offerte op maat.</p>
+        <a onclick="showPage('contact')" class="btn btn-primary">Neem contact op →</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="nav-logo" onclick="showPage('home')" style="cursor:pointer;"><span class="logo-bollens">bollens</span><span class="logo-divider"></span><span class="logo-web">web</span></a>
+            <p>Professionele websites voor kleine bedrijven in Antwerpen. Betaalbaar, modern en altijd mobiel-vriendelijk.</p>
+          </div>
+          <div><h4>Pagina's</h4><ul class="footer-links"><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('diensten')">Diensten</a></li><li><a onclick="showPage('over')">Over mij</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+          <div><h4>Diensten</h4><ul class="footer-links"><li><a onclick="showPage('diensten')">Website design</a></li><li><a onclick="showPage('diensten')">Webshops</a></li><li><a onclick="showPage('diensten')">SEO optimalisatie</a></li><li><a onclick="showPage('diensten')">Hosting</a></li></ul></div>
+          <div><h4>Contact</h4><ul class="footer-links"><li><a href="mailto:bollensluigi@gmail.com">bollensluigi@gmail.com</a></li><li><a href="tel:+32468373437">0468 37 34 37</a></li><li><span style="color:rgba(255,255,255,0.4);font-size:0.9rem;">Antwerpen, België</span></li></ul></div>
+        </div>
+        <div class="footer-bottom"><span>© 2026 Bollens Web. Alle rechten voorbehouden.</span><span>Ontworpen met ♥ in Antwerpen</span></div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===== OVER MIJ ===== -->
+  <div id="page-over" class="page">
+
+    <section class="page-header">
+      <span class="section-label">Over mij</span>
+      <h1>Hallo, ik ben <span class="accent">Louis</span></h1>
+      <p>Webdesigner uit Antwerpen met een passie voor het helpen van kleine bedrijven online.</p>
+    </section>
+
+    <section class="section" style="padding-top: 40px;">
+      <div class="container">
+        <div class="grid-2" style="gap: 64px;">
+          <div style="position: relative;">
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; position: relative;">
+              <img src="https://placehold.co/560x640/f4f2ef/c2703e?text=Louis+Bollens" alt="Louis Bollens" style="width:100%;height:640px;object-fit:cover;">
+              <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,26,46,0.5) 0%,transparent 40%);"></div>
+            </div>
+            <div style="position:absolute;bottom:24px;left:24px;right:24px;background:var(--bg-floating);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px 24px;">
+              <div style="display:flex;justify-content:space-around;text-align:center;">
+                <div><span class="stat-number" style="font-size:1.6rem;">23</span><span class="stat-label" style="display:block;">Klanten</span></div>
+                <div style="width:1px;background:var(--border);"></div>
+                <div><span class="stat-number" style="font-size:1.6rem;">100%</span><span class="stat-label" style="display:block;">Tevredenheid</span></div>
+                <div style="width:1px;background:var(--border);"></div>
+                <div><span class="stat-number" style="font-size:1.6rem;">5★</span><span class="stat-label" style="display:block;">Reviews</span></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="section-label">Mijn verhaal</span>
+            <h2 style="margin-bottom: 20px;">Websites maken die écht werken</h2>
+            <div class="divider"></div>
+            <p style="margin-bottom: 20px;">Ik ben Louis Bollens, webdesigner en ontwikkelaar gevestigd in Antwerpen. Mijn passie is het bouwen van mooie, functionele websites die kleine bedrijven helpen groeien.</p>
+            <p style="margin-bottom: 20px;">Ik geloof dat elk bedrijf — groot of klein — een professionele online aanwezigheid verdient. Helaas zijn de prijzen bij traditionele webdesign bureaus vaak te hoog voor startende ondernemers.</p>
+            <p style="margin-bottom: 32px;">Mijn aanpak is simpel: ik luister naar wat jij nodig hebt, ontwerp iets dat bij jouw merk past, en lever het snel op. Zo kan jij je focussen op waar je goed in bent — je bedrijf runnen.</p>
+            <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px;">
+              <div style="display:flex;align-items:center;gap:12px;"><div class="icon-box" style="width:40px;height:40px;font-size:1.1rem;margin-bottom:0;">🎯</div><div><div style="font-weight:600;font-size:0.92rem;color:var(--text-primary);">Focus op resultaat</div><div style="font-size:0.85rem;color:var(--text-muted);">Websites die klanten opleveren, niet alleen er mooi uitzien</div></div></div>
+              <div style="display:flex;align-items:center;gap:12px;"><div class="icon-box" style="width:40px;height:40px;font-size:1.1rem;margin-bottom:0;">💬</div><div><div style="font-weight:600;font-size:0.92rem;color:var(--text-primary);">Directe communicatie</div><div style="font-size:0.85rem;color:var(--text-muted);">Altijd bereikbaar via telefoon, e-mail of WhatsApp</div></div></div>
+              <div style="display:flex;align-items:center;gap:12px;"><div class="icon-box" style="width:40px;height:40px;font-size:1.1rem;margin-bottom:0;">🛡️</div><div><div style="font-weight:600;font-size:0.92rem;color:var(--text-primary);">Eerlijke prijzen</div><div style="font-size:0.85rem;color:var(--text-muted);">Geen verborgen kosten, vaste prijs afgesproken vooraf</div></div></div>
+            </div>
+            <a onclick="showPage('contact')" class="btn btn-primary">Neem contact op →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--bg-floating);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+      <div class="container">
+        <div style="max-width:700px;margin:0 auto;text-align:center;">
+          <span class="section-label">Mijn missie</span>
+          <h2 style="margin-bottom: 16px;">Waarom ik dit doe</h2>
+          <div class="divider" style="margin:24px auto;"></div>
+          <p style="font-size:1.05rem;margin:0 auto 20px;">Ik heb gezien hoe moeilijk het is voor kleine ondernemers om online aan de slag te gaan. Webdesign bureaus vragen duizenden euro's, freelancers zijn niet altijd betrouwbaar, en het zelf doen kost te veel tijd.</p>
+          <p style="font-size:1.05rem;margin:0 auto;">Ik wil de brug zijn tussen kwaliteit en betaalbaarheid. Elke ondernemer verdient een website waar hij trots op is — en dat hoeft geen fortuin te kosten.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="text-align:center;background:var(--bg-floating);border-top:1px solid var(--border);">
+      <div class="container">
+        <span class="section-label">Samenwerken?</span>
+        <h2 style="margin-bottom:16px;">Laten we kennismaken</h2>
+        <p style="margin:0 auto 40px;">Benieuwd wat ik voor jouw bedrijf kan doen? Neem vrijblijvend contact op.</p>
+        <a onclick="showPage('contact')" class="btn btn-primary">Neem contact op →</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="nav-logo" onclick="showPage('home')" style="cursor:pointer;"><span class="logo-bollens">bollens</span><span class="logo-divider"></span><span class="logo-web">web</span></a>
+            <p>Professionele websites voor kleine bedrijven in Antwerpen. Betaalbaar, modern en altijd mobiel-vriendelijk.</p>
+          </div>
+          <div><h4>Pagina's</h4><ul class="footer-links"><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('diensten')">Diensten</a></li><li><a onclick="showPage('over')">Over mij</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+          <div><h4>Diensten</h4><ul class="footer-links"><li><a onclick="showPage('diensten')">Website design</a></li><li><a onclick="showPage('diensten')">Webshops</a></li><li><a onclick="showPage('diensten')">SEO optimalisatie</a></li><li><a onclick="showPage('diensten')">Hosting</a></li></ul></div>
+          <div><h4>Contact</h4><ul class="footer-links"><li><a href="mailto:bollensluigi@gmail.com">bollensluigi@gmail.com</a></li><li><a href="tel:+32468373437">0468 37 34 37</a></li><li><span style="color:rgba(255,255,255,0.4);font-size:0.9rem;">Antwerpen, België</span></li></ul></div>
+        </div>
+        <div class="footer-bottom"><span>© 2026 Bollens Web. Alle rechten voorbehouden.</span><span>Ontworpen met ♥ in Antwerpen</span></div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===== CONTACT ===== -->
+  <div id="page-contact" class="page">
+
+    <section class="page-header">
+      <span class="section-label">Contact</span>
+      <h1>Laten we <span class="accent">praten</span></h1>
+      <p>Heb je een vraag of wil je een offerte? Neem gerust contact op — ik reageer binnen 24 uur.</p>
+    </section>
+
+    <section class="section" style="padding-top: 40px;">
+      <div class="container">
+        <div style="max-width: 600px; margin: 0 auto;">
+          <span class="section-label">Contactgegevens</span>
+          <h2 style="margin-bottom: 12px;">Neem contact op</h2>
+          <p style="margin-bottom: 40px;">Vertel me over jouw project en ik stuur je een vrijblijvende offerte op maat. Ik reageer altijd binnen 24 uur.</p>
+          <div style="display:flex;flex-direction:column;gap:24px;margin-bottom:48px;">
+            <div style="display:flex;align-items:flex-start;gap:16px;"><div class="icon-box" style="margin-bottom:0;flex-shrink:0;">📧</div><div><div style="font-weight:600;font-size:0.92rem;color:var(--text-primary);margin-bottom:2px;">E-mail</div><a href="mailto:bollensluigi@gmail.com" style="font-size:0.9rem;color:var(--text-secondary);">bollensluigi@gmail.com</a></div></div>
+            <div style="display:flex;align-items:flex-start;gap:16px;"><div class="icon-box" style="margin-bottom:0;flex-shrink:0;">📞</div><div><div style="font-weight:600;font-size:0.92rem;color:var(--text-primary);margin-bottom:2px;">Telefoon</div><a href="tel:+32468373437" style="font-size:0.9rem;color:var(--text-secondary);">0468 37 34 37</a></div></div>
+            <div style="display:flex;align-items:flex-start;gap:16px;"><div class="icon-box" style="margin-bottom:0;flex-shrink:0;">📍</div><div><div style="font-weight:600;font-size:0.92rem;color:var(--text-primary);margin-bottom:2px;">Locatie</div><span style="font-size:0.9rem;color:var(--text-secondary);">Antwerpen, België</span></div></div>
+            <div style="display:flex;align-items:flex-start;gap:16px;"><div class="icon-box" style="margin-bottom:0;flex-shrink:0;">⏰</div><div><div style="font-weight:600;font-size:0.92rem;color:var(--text-primary);margin-bottom:2px;">Bereikbaarheid</div><span style="font-size:0.9rem;color:var(--text-secondary);">Ma – Za: 09:00 – 20:00</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--bg-floating);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+      <div class="container">
+        <div style="text-align:center;margin-bottom:56px;"><span class="section-label">Veelgestelde vragen</span><h2>FAQ</h2></div>
+        <div style="max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:16px;">
+          <div class="card"><h3 style="font-size:1rem;font-family:var(--font-body);font-weight:600;margin-bottom:8px;letter-spacing:normal;">Hoe lang duurt het voordat mijn website klaar is?</h3><p style="font-size:0.9rem;margin:0;">Afhankelijk van het pakket is jouw website binnen 5 tot 10 werkdagen klaar. Bij grotere projecten bespreken we de planning samen.</p></div>
+          <div class="card"><h3 style="font-size:1rem;font-family:var(--font-body);font-weight:600;margin-bottom:8px;letter-spacing:normal;">Zijn er verborgen kosten?</h3><p style="font-size:0.9rem;margin:0;">Nee, absoluut niet. De prijs die we afspreken is de prijs die je betaalt. Hosting na het eerste jaar kost €5-10 per maand.</p></div>
+          <div class="card"><h3 style="font-size:1rem;font-family:var(--font-body);font-weight:600;margin-bottom:8px;letter-spacing:normal;">Kan ik mijn website later uitbreiden?</h3><p style="font-size:0.9rem;margin:0;">Zeker! Je kunt altijd upgraden naar een groter pakket of extra functies laten toevoegen. We bespreken dat samen.</p></div>
+          <div class="card"><h3 style="font-size:1rem;font-family:var(--font-body);font-weight:600;margin-bottom:8px;letter-spacing:normal;">Wat heb je van mij nodig om te starten?</h3><p style="font-size:0.9rem;margin:0;">Je logo, teksten, foto's en een idee van wat je wilt. Geen zorgen als je niet alles hebt — ik help je graag op weg.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="nav-logo" onclick="showPage('home')" style="cursor:pointer;"><span class="logo-bollens">bollens</span><span class="logo-divider"></span><span class="logo-web">web</span></a>
+            <p>Professionele websites voor kleine bedrijven in Antwerpen. Betaalbaar, modern en altijd mobiel-vriendelijk.</p>
+          </div>
+          <div><h4>Pagina's</h4><ul class="footer-links"><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('diensten')">Diensten</a></li><li><a onclick="showPage('over')">Over mij</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+          <div><h4>Diensten</h4><ul class="footer-links"><li><a onclick="showPage('diensten')">Website design</a></li><li><a onclick="showPage('diensten')">Webshops</a></li><li><a onclick="showPage('diensten')">SEO optimalisatie</a></li><li><a onclick="showPage('diensten')">Hosting</a></li></ul></div>
+          <div><h4>Contact</h4><ul class="footer-links"><li><a href="mailto:bollensluigi@gmail.com">bollensluigi@gmail.com</a></li><li><a href="tel:+32468373437">0468 37 34 37</a></li><li><span style="color:rgba(255,255,255,0.4);font-size:0.9rem;">Antwerpen, België</span></li></ul></div>
+        </div>
+        <div class="footer-bottom"><span>© 2026 Bollens Web. Alle rechten voorbehouden.</span><span>Ontworpen met ♥ in Antwerpen</span></div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function showPage(name) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      // Remove active from all nav links
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      // Show selected page
+      document.getElementById('page-' + name).classList.add('active');
+      // Mark nav link active
+      const navLink = document.getElementById('nav-' + name);
+      if (navLink) navLink.classList.add('active');
+      // Close mobile menu
+      document.querySelector('.nav-links').classList.remove('open');
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+  </script>
+
+</body>
+</html>
