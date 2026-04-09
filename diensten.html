@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diensten & Prijzen – Bollensify Webdesign | Antwerpen</title>
+  <meta name="description" content="Bekijk het volledige aanbod van Bollensify: website design, webshop, SEO, hosting en branding. Eenmalige prijzen vanaf €249.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a2744'/%3E%3Cpath d='M16 3L19 13L29 16L19 19L16 29L13 19L3 16L13 13Z' fill='%234a90d9'/%3E%3Cpath d='M16 3L19 13L29 16L19 19L16 29L13 19L3 16L13 13Z' fill='white' opacity='0.18'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .service-detail { scroll-margin-top: 90px; }
+
+    /* ── Service illustrations ── */
+    .service-illus {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .service-illus svg.art { width: 78%; height: 78%; }
+    @media (max-width: 768px) {
+      .service-illus { aspect-ratio: 16/9; border-radius: 12px; }
+      .service-illus svg.art { width: 70%; height: 70%; }
+    }
+    @media (max-width: 480px) {
+      .service-detail-img { display: none; }
+    }
+
+    /* Floating dot grid decoration */
+    .service-illus::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    /* Per-service gradients */
+    .si-design  { background: linear-gradient(135deg, #0d1f4a 0%, #1a3a7a 50%, #0f2860 100%); }
+    .si-webshop { background: linear-gradient(135deg, #0a2040 0%, #0e3060 50%, #173a70 100%); }
+    .si-seo     { background: linear-gradient(135deg, #0d2040 0%, #1a4060 50%, #0f3050 100%); }
+    .si-redesign{ background: linear-gradient(135deg, #101e3c 0%, #1e2e5a 50%, #2a3870 100%); }
+    .si-hosting { background: linear-gradient(135deg, #0a1a30 0%, #0e2540 55%, #1a3358 100%); }
+    .si-branding{ background: linear-gradient(135deg, #0e1f45 0%, #1a2e6a 50%, #243880 100%); }
+    .si-chatbot { background: linear-gradient(135deg, #0d2e30 0%, #0f3d40 50%, #154850 100%); }
+
+    /* Glow blob behind icon */
+    .service-illus .glow {
+      position: absolute;
+      width: 55%;
+      height: 55%;
+      border-radius: 50%;
+      filter: blur(48px);
+      opacity: 0.35;
+      background: #4a90d9;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav nav-scrolled" role="navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Bollensify – Home">
+        <svg width="175" height="45" viewBox="0 0 280 70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <text x="4" y="46" font-family="'Space Grotesk', sans-serif" font-weight="300" font-size="40" fill="#0d1530" letter-spacing="-1">bollens</text>
+          <text x="186" y="46" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="40" fill="#2a55b8" letter-spacing="-1">ify</text>
+          <path d="M 180 28 L 182 22 L 184 28 L 190 30 L 184 32 L 182 38 L 180 32 L 174 30 Z" fill="#3d6bca" opacity="0.85"/>
+        </svg>
+      </a>
+      <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false"><span></span><span></span><span></span></button>
+      <ul class="nav-links">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li class="has-dropdown">
+          <a href="diensten.html" class="dropdown-toggle active">
+            <span data-i18n="nav.services">Diensten</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <ul class="dropdown">
+            <li><a href="#website-design" data-i18n="nav.svc.design">Website Design</a></li>
+            <li><a href="#webshop" data-i18n="nav.svc.webshop">Webshop</a></li>
+            <li><a href="#seo" data-i18n="nav.svc.seo">SEO Optimalisatie</a></li>
+            <li><a href="#redesign" data-i18n="nav.svc.redesign">Website Redesign</a></li>
+            <li><a href="#hosting" data-i18n="nav.svc.hosting">Hosting &amp; Onderhoud</a></li>
+            <li><a href="#branding" data-i18n="nav.svc.branding">Logo &amp; Branding</a></li>
+            <li><a href="#chatbot" data-i18n="nav.svc.chatbot">AI Chatbot</a></li>
+          </ul>
+        </li>
+        <li><a href="cases.html" data-i18n="nav.portfolio">Cases</a></li>
+        <li><a href="over.html" data-i18n="nav.about">Over</a></li>
+        <li><a href="contact.html" class="nav-cta" data-i18n="nav.contact">Neem contact op</a></li>
+      </ul>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="nl" aria-label="Nederlands">NL</button>
+        <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
+        <button class="lang-btn" data-lang="en" aria-label="English">ENG</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="page-hero-breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a> › <span data-i18n="nav.services">Diensten</span></div>
+      <h1 data-i18n="diensten.hero.title">Diensten &amp; Prijzen</h1>
+      <p class="page-hero-sub" data-i18n="diensten.hero.sub">Eenmalige prijs, geen abonnement, geen verborgen kosten.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Prijspakketten -->
+<section class="section pricing-section" id="prijspakketten">
+  <!-- Sparkle canvas -->
+  <canvas class="dpk-sparkles" id="dpkSparkles" aria-hidden="true"></canvas>
+  <!-- Grid overlay -->
+  <div class="dpk-grid-overlay" aria-hidden="true"></div>
+  <!-- Glow ring ellipses (from reference) -->
+  <div class="dpk-ellipse-wrap" aria-hidden="true">
+    <div class="dpk-ellipse"></div>
+    <div class="dpk-ellipse"></div>
+  </div>
+  <!-- Radial centre glow -->
+  <div class="pricing-bg-glow"></div>
+
+  <div class="container" style="position:relative;z-index:10;">
+    <!-- Header with word-reveal animation -->
+    <div class="section-header dpk-header">
+      <span class="section-eyebrow dpk-reveal-item" style="--dpk-delay:0s" data-i18n="diensten.pricing.eyebrow">Prijspakketten</span>
+      <h2 class="section-title dpk-word-reveal" data-i18n="diensten.pricing.h2">Kies het pakket dat bij u past</h2>
+      <p class="section-subtitle dpk-reveal-item" style="--dpk-delay:0.3s" data-i18n="diensten.pricing.subtitle">Alle prijzen zijn eenmalig — u betaalt één keer, geen maandelijkse kosten.</p>
+      <span class="title-accent dpk-reveal-item" style="--dpk-delay:0.45s;margin:18px auto 0;display:block;width:40px;height:3px;background:#4a90d9;border-radius:2px;"></span>
+    </div>
+
+    <div class="dpk-grid">
+
+      <!-- Starter -->
+      <div class="dpk-card dpk-reveal-item" style="--dpk-delay:0.15s">
+        <div class="dpk-inner">
+          <div class="dpk-name">Starter</div>
+          <div class="dpk-price-row">
+            <span class="dpk-price">€<span class="dpk-amount">249</span></span>
+            <span class="dpk-period" data-i18n="diensten.pricing.onetime">eenmalig</span>
+          </div>
+          <p class="dpk-desc" data-i18n="diensten.starter.desc">Eenmalige prijs · Ideaal voor starters die snel online willen.</p>
+          <a href="contact.html" class="dpk-btn dpk-btn-outline" data-i18n="nav.contact">Neem contact op</a>
+          <div class="dpk-features">
+            <div class="dpk-features-label" data-i18n="diensten.pricing.includes">Inbegrepen:</div>
+            <ul>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.starter.f1">One-page website (5 secties)</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.starter.f2">Mobiel-vriendelijk (responsive)</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.starter.f3">Contactformulier</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.starter.f4">Basis SEO-optimalisatie</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.starter.f5">Gratis domeinnaam (1 jaar)</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.starter.f6">Oplevering binnen 7 werkdagen</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Professional (popular) -->
+      <div class="dpk-card dpk-card-popular dpk-reveal-item" style="--dpk-delay:0.3s">
+        <div class="dpk-popular-badge" data-i18n="diensten.popular">Populair</div>
+        <div class="dpk-inner">
+          <div class="dpk-name">Professional</div>
+          <div class="dpk-price-row">
+            <span class="dpk-price">€<span class="dpk-amount">349</span></span>
+            <span class="dpk-period" data-i18n="diensten.pricing.onetime">eenmalig</span>
+          </div>
+          <p class="dpk-desc" data-i18n="diensten.pro.desc">Eenmalige prijs · Voor bedrijven met meerdere pagina's.</p>
+          <a href="contact.html" class="dpk-btn dpk-btn-primary" data-i18n="nav.contact">Neem contact op</a>
+          <div class="dpk-features">
+            <div class="dpk-features-label" data-i18n="diensten.pricing.includes.pro">Inbegrepen:</div>
+            <ul>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.pro.f1">Multi-page website (tot 5 pagina's)</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.pro.f2">SEO-optimalisatie (alle pagina's)</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.pro.f3">Google Maps integratie</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.pro.f4">Snelle laadtijden (geoptimaliseerd)</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.pro.f5">1 jaar gratis hosting inbegrepen</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.pro.f6">Oplevering binnen 14 werkdagen</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.pro.f7">30 dagen aanpassingen na oplevering</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business -->
+      <div class="dpk-card dpk-reveal-item" style="--dpk-delay:0.45s">
+        <div class="dpk-inner">
+          <div class="dpk-name">Business</div>
+          <div class="dpk-price-row">
+            <span class="dpk-price">€<span class="dpk-amount">499</span></span>
+            <span class="dpk-period" data-i18n="diensten.pricing.onetime">eenmalig</span>
+          </div>
+          <p class="dpk-desc" data-i18n="diensten.biz.desc">Eenmalige prijs · Met webshop of boekingssysteem.</p>
+          <a href="contact.html" class="dpk-btn dpk-btn-outline" data-i18n="nav.contact">Neem contact op</a>
+          <div class="dpk-features">
+            <div class="dpk-features-label" data-i18n="diensten.pricing.includes.biz">Alles van Professional, plus:</div>
+            <ul>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.biz.f1">Alles van Professional</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.biz.f2">Webshop of boekingssysteem</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.biz.f3">Tot 10 pagina's</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.biz.f4">E-commerce integratie</span></li>
+              <li><span class="dpk-dot"></span><span data-i18n="diensten.biz.f5">60 dagen aanpassingen na oplevering</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /dpk-grid -->
+  </div>
+</section>
+
+<script>
+/* ── Pricing Section Animations ── */
+(function() {
+  /* 1. Sparkle canvas */
+  const canvas = document.getElementById('dpkSparkles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const COUNT = 120;
+
+  function resize() {
+    const sec = canvas.parentElement;
+    canvas.width  = sec.offsetWidth;
+    canvas.height = sec.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (let i = 0; i < COUNT; i++) {
+    particles.push({
+      x: Math.random(),
+      y: Math.random(),
+      size: Math.random() * 1.4 + 0.3,
+      speedY: (Math.random() * 0.15 + 0.05) * (Math.random() < 0.5 ? 1 : -1),
+      opacity: Math.random(),
+      opDir: Math.random() < 0.5 ? 1 : -1,
+      opSpeed: Math.random() * 0.008 + 0.003,
+    });
+  }
+
+  function drawSparkles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.y += p.speedY / canvas.height;
+      if (p.y < 0) p.y = 1;
+      if (p.y > 1) p.y = 0;
+      p.opacity += p.opDir * p.opSpeed;
+      if (p.opacity >= 1) { p.opacity = 1; p.opDir = -1; }
+      if (p.opacity <= 0) { p.opacity = 0; p.opDir = 1; }
+      ctx.beginPath();
+      ctx.arc(p.x * canvas.width, p.y * canvas.height, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${p.opacity * 0.7})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(drawSparkles);
+  }
+  drawSparkles();
+
+  /* 2. Scroll-reveal: dpk-reveal-item & dpk-word-reveal */
+  const revealEls = document.querySelectorAll('.dpk-reveal-item, .dpk-word-reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('dpk-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  /* 3. Word-reveal: split heading into word spans */
+  document.querySelectorAll('.dpk-word-reveal').forEach(el => {
+    const words = el.textContent.trim().split(' ');
+    el.innerHTML = words.map((w, i) =>
+      `<span class="dpk-word" style="--wi:${i}"><span class="dpk-word-inner">${w}</span></span>`
+    ).join(' ');
+  });
+})();
+</script>
+
+<!-- Diensten detail -->
+<section class="section section-grey">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-eyebrow" data-i18n="diensten.detail.eyebrow">Meer informatie</span>
+      <h2 class="section-title" data-i18n="diensten.detail.h2">Wat houdt elke dienst in?</h2>
+      <span class="title-accent"></span>
+    </div>
+
+    <div id="website-design" class="service-detail fade-in">
+      <div class="service-detail-img">
+        <!-- Website Design illustration: browser window mockup -->
+        <div class="service-illus si-design" aria-hidden="true">
+          <div class="glow"></div>
+          <svg class="art" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Browser frame -->
+            <rect x="10" y="10" width="180" height="130" rx="10" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+            <!-- Top bar -->
+            <rect x="10" y="10" width="180" height="26" rx="10" fill="rgba(255,255,255,0.10)"/>
+            <rect x="10" y="28" width="180" height="8" fill="rgba(255,255,255,0.10)"/>
+            <!-- Traffic lights -->
+            <circle cx="26" cy="23" r="4" fill="#ff6b6b" opacity="0.85"/>
+            <circle cx="38" cy="23" r="4" fill="#ffd93d" opacity="0.85"/>
+            <circle cx="50" cy="23" r="4" fill="#6bcb77" opacity="0.85"/>
+            <!-- URL bar -->
+            <rect x="62" y="17" width="100" height="12" rx="6" fill="rgba(255,255,255,0.12)"/>
+            <!-- Hero block inside browser -->
+            <rect x="20" y="44" width="160" height="42" rx="6" fill="rgba(74,144,217,0.25)" stroke="rgba(74,144,217,0.4)" stroke-width="1"/>
+            <!-- Hero text lines -->
+            <rect x="30" y="53" width="70" height="6" rx="3" fill="rgba(255,255,255,0.6)"/>
+            <rect x="30" y="63" width="50" height="5" rx="2.5" fill="rgba(255,255,255,0.3)"/>
+            <!-- CTA button in hero -->
+            <rect x="30" y="72" width="36" height="8" rx="4" fill="#4a90d9"/>
+            <!-- Content cards row -->
+            <rect x="20" y="94" width="46" height="36" rx="5" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <rect x="77" y="94" width="46" height="36" rx="5" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <rect x="134" y="94" width="46" height="36" rx="5" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <!-- Card icons -->
+            <rect x="29" y="101" width="16" height="12" rx="3" fill="rgba(74,144,217,0.5)"/>
+            <rect x="86" y="101" width="16" height="12" rx="3" fill="rgba(74,144,217,0.5)"/>
+            <rect x="143" y="101" width="16" height="12" rx="3" fill="rgba(74,144,217,0.5)"/>
+            <rect x="29" y="117" width="28" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+            <rect x="86" y="117" width="22" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+            <rect x="143" y="117" width="26" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+          </svg>
+        </div>
+      </div>
+      <div class="service-detail-content">
+        <span class="section-eyebrow" data-i18n="diensten.design.eyebrow">01 — Website Design</span>
+        <h3 data-i18n="nav.svc.design">Website Design</h3>
+        <p data-i18n="diensten.design.p1">Uw website is vaak de eerste indruk die iemand van uw bedrijf krijgt. Ik ontwerp een site die er professioneel uitziet, snel laadt en goed werkt op elk toestel — van smartphone tot desktop.</p>
+        <p data-i18n="diensten.design.p2">Elk project start met een gesprek over uw doelen, uw klanten en uw sector. Op basis daarvan bouw ik een website die echt bij u past, niet een generiek template.</p>
+        <ul class="check-list" style="margin-top:1rem;">
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.design.c1">Op maat ontworpen — geen templates</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.design.c2">Volledig mobiel-vriendelijk (responsive)</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.design.c3">Snel geladen — geoptimaliseerde afbeeldingen en code</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.design.c4">Contactformulier inbegrepen</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.design.c5">Basis SEO-structuur vanaf het begin</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.design.c6">Oplevering binnen de afgesproken termijn</span></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:1.5rem;" data-i18n="diensten.ask">Stel een vraag</a>
+      </div>
+    </div>
+
+    <div id="webshop" class="service-detail reverse fade-in">
+      <div class="service-detail-img">
+        <!-- Webshop illustration: product grid + cart -->
+        <div class="service-illus si-webshop" aria-hidden="true">
+          <div class="glow" style="background:#3a8fd9;"></div>
+          <svg class="art" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background panel -->
+            <rect x="8" y="8" width="184" height="134" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)" stroke-width="1.2"/>
+            <!-- Top bar with cart icon -->
+            <rect x="8" y="8" width="184" height="22" rx="10" fill="rgba(255,255,255,0.08)"/>
+            <rect x="8" y="22" width="184" height="8" fill="rgba(255,255,255,0.08)"/>
+            <rect x="18" y="14" width="60" height="8" rx="4" fill="rgba(255,255,255,0.2)"/>
+            <!-- Cart icon top right -->
+            <path d="M168 10 L170 10 L173 19 L181 19 L180 22 L172 22 L170 14 L168 14Z" fill="rgba(255,255,255,0.5)" stroke="none"/>
+            <circle cx="173" cy="24" r="1.5" fill="rgba(255,255,255,0.7)"/>
+            <circle cx="179" cy="24" r="1.5" fill="rgba(255,255,255,0.7)"/>
+            <circle cx="185" cy="11" r="5" fill="#4a90d9"/>
+            <text x="185" y="14" text-anchor="middle" font-size="6" fill="white" font-family="sans-serif">3</text>
+            <!-- Product grid: 2x2 -->
+            <!-- Card 1 -->
+            <rect x="16" y="36" width="76" height="82" rx="7" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+            <rect x="16" y="36" width="76" height="46" rx="7" fill="rgba(74,144,217,0.22)"/>
+            <!-- Product image placeholder -->
+            <rect x="28" y="44" width="52" height="30" rx="4" fill="rgba(74,144,217,0.45)"/>
+            <circle cx="54" cy="59" r="9" fill="rgba(74,144,217,0.7)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <rect x="22" y="88" width="42" height="5" rx="2.5" fill="rgba(255,255,255,0.55)"/>
+            <rect x="22" y="97" width="28" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+            <rect x="22" y="106" width="56" height="7" rx="3.5" fill="#4a90d9"/>
+            <!-- Card 2 -->
+            <rect x="108" y="36" width="76" height="82" rx="7" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+            <rect x="108" y="36" width="76" height="46" rx="7" fill="rgba(42,85,184,0.3)"/>
+            <rect x="120" y="44" width="52" height="30" rx="4" fill="rgba(42,85,184,0.5)"/>
+            <circle cx="146" cy="59" r="9" fill="rgba(42,85,184,0.8)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <rect x="114" y="88" width="42" height="5" rx="2.5" fill="rgba(255,255,255,0.55)"/>
+            <rect x="114" y="97" width="28" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+            <rect x="114" y="106" width="56" height="7" rx="3.5" fill="#4a90d9"/>
+            <!-- Price badge card 1 -->
+            <rect x="72" y="96" width="14" height="9" rx="4.5" fill="rgba(255,255,255,0.15)"/>
+            <text x="79" y="103" text-anchor="middle" font-size="5.5" fill="rgba(255,255,255,0.8)" font-family="sans-serif">€29</text>
+            <!-- Price badge card 2 -->
+            <rect x="164" y="96" width="14" height="9" rx="4.5" fill="rgba(255,255,255,0.15)"/>
+            <text x="171" y="103" text-anchor="middle" font-size="5.5" fill="rgba(255,255,255,0.8)" font-family="sans-serif">€49</text>
+          </svg>
+        </div>
+      </div>
+      <div class="service-detail-content">
+        <span class="section-eyebrow" data-i18n="diensten.webshop.eyebrow">02 — Webshop</span>
+        <h3 data-i18n="nav.svc.webshop">Webshop</h3>
+        <p data-i18n="diensten.webshop.p1">Wilt u producten of diensten online verkopen? Ik bouw een webshop die er verzorgd uitziet, eenvoudig te beheren is en waarbij uw klanten vlot kunnen bestellen en betalen.</p>
+        <p data-i18n="diensten.webshop.p2">U hoeft geen technische kennis te hebben. Na oplevering laat ik u zien hoe u zelf producten kunt toevoegen, bestellingen kunt opvolgen en de inhoud kunt beheren.</p>
+        <ul class="check-list" style="margin-top:1rem;">
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.webshop.c1">Overzichtelijke productpagina's</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.webshop.c2">Veilige online betaling (Mollie, Stripe of Bancontact)</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.webshop.c3">Winkelwagen en checkout op maat</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.webshop.c4">Automatische orderbevestiging per e-mail</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.webshop.c5">Eenvoudig beheer via dashboard</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.webshop.c6">BTW en verzendkosten configureerbaar</span></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:1.5rem;" data-i18n="diensten.ask">Stel een vraag</a>
+      </div>
+    </div>
+
+    <div id="seo" class="service-detail fade-in">
+      <div class="service-detail-img">
+        <!-- SEO illustration: rising bar chart + magnifying glass -->
+        <div class="service-illus si-seo" aria-hidden="true">
+          <div class="glow" style="background:#2a8fd9; left:20%; top:20%;"></div>
+          <svg class="art" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Grid lines -->
+            <line x1="20" y1="30"  x2="20"  y2="120" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <line x1="20" y1="120" x2="170" y2="120" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <line x1="20" y1="95"  x2="170" y2="95"  stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="20" y1="70"  x2="170" y2="70"  stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="20" y1="45"  x2="170" y2="45"  stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4 3"/>
+            <!-- Bars -->
+            <rect x="30"  y="100" width="16" height="20" rx="4" fill="rgba(74,144,217,0.4)"/>
+            <rect x="56"  y="88"  width="16" height="32" rx="4" fill="rgba(74,144,217,0.55)"/>
+            <rect x="82"  y="72"  width="16" height="48" rx="4" fill="rgba(74,144,217,0.7)"/>
+            <rect x="108" y="54"  width="16" height="66" rx="4" fill="rgba(74,144,217,0.85)"/>
+            <rect x="134" y="34"  width="16" height="86" rx="4" fill="#4a90d9"/>
+            <!-- Trend line -->
+            <polyline points="38,108 64,96 90,80 116,62 142,42" stroke="#7ab3ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- Dots on trend -->
+            <circle cx="38"  cy="108" r="3.5" fill="#ffffff" stroke="#4a90d9" stroke-width="1.5"/>
+            <circle cx="64"  cy="96"  r="3.5" fill="#ffffff" stroke="#4a90d9" stroke-width="1.5"/>
+            <circle cx="90"  cy="80"  r="3.5" fill="#ffffff" stroke="#4a90d9" stroke-width="1.5"/>
+            <circle cx="116" cy="62"  r="3.5" fill="#ffffff" stroke="#4a90d9" stroke-width="1.5"/>
+            <circle cx="142" cy="42"  r="5"   fill="#4a90d9" stroke="#ffffff" stroke-width="2"/>
+            <!-- Magnifying glass -->
+            <circle cx="166" cy="30" r="18" fill="rgba(255,255,255,0.07)" stroke="rgba(74,144,217,0.8)" stroke-width="2.5"/>
+            <circle cx="164" cy="28" r="10" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+            <line x1="171" y1="36" x2="180" y2="46" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round"/>
+            <!-- Google label -->
+            <rect x="154" y="20" width="20" height="8" rx="4" fill="rgba(74,144,217,0.5)"/>
+            <text x="164" y="26" text-anchor="middle" font-size="4.5" fill="white" font-family="sans-serif" font-weight="bold">Google</text>
+            <!-- Up arrow badge -->
+            <rect x="148" y="30" width="22" height="12" rx="6" fill="rgba(107,203,119,0.85)"/>
+            <text x="159" y="38" text-anchor="middle" font-size="6" fill="white" font-family="sans-serif" font-weight="bold">↑ #1</text>
+          </svg>
+        </div>
+      </div>
+      <div class="service-detail-content">
+        <span class="section-eyebrow" data-i18n="diensten.seo.eyebrow">03 — SEO Optimalisatie</span>
+        <h3 data-i18n="nav.svc.seo">SEO Optimalisatie</h3>
+        <p data-i18n="diensten.seo.p1">SEO staat voor zoekmachineoptimalisatie — het zorgt dat uw website hoger verschijnt in Google wanneer mensen zoeken naar wat u aanbiedt. Meer zichtbaarheid betekent meer bezoekers, zonder te betalen voor advertenties.</p>
+        <p data-i18n="diensten.seo.p2">Ik bekijk uw volledige website technisch én inhoudelijk: welke zoekwoorden relevant zijn, hoe snel uw pagina's laden en of Google alles goed kan lezen.</p>
+        <ul class="check-list" style="margin-top:1rem;">
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.seo.c1">Zoekwoordenonderzoek voor uw sector</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.seo.c2">Optimalisatie van titels, beschrijvingen en koppen</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.seo.c3">Technische SEO: laadsnelheid, mobiel, veiligheid</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.seo.c4">Google Search Console instellen en koppelen</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.seo.c5">Lokale SEO voor vindbaarheid in uw regio</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.seo.c6">Duidelijk rapport met wat er gedaan is</span></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:1.5rem;" data-i18n="diensten.ask">Stel een vraag</a>
+      </div>
+    </div>
+
+    <div id="redesign" class="service-detail reverse fade-in">
+      <div class="service-detail-img">
+        <!-- Redesign illustration: before/after split screens -->
+        <div class="service-illus si-redesign" aria-hidden="true">
+          <div class="glow" style="background:#4a70d9; width:60%; height:60%;"></div>
+          <svg class="art" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- BEFORE panel (left, dull/old) -->
+            <rect x="8" y="20" width="82" height="110" rx="8" fill="rgba(60,60,80,0.5)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <!-- Old nav -->
+            <rect x="8" y="20" width="82" height="16" rx="8" fill="rgba(40,40,60,0.8)"/>
+            <rect x="8" y="28" width="82" height="8" fill="rgba(40,40,60,0.8)"/>
+            <rect x="14" y="24" width="24" height="6" rx="3" fill="rgba(255,255,255,0.2)"/>
+            <!-- Old hero: grey block -->
+            <rect x="14" y="42" width="70" height="30" rx="4" fill="rgba(90,90,110,0.4)"/>
+            <rect x="18" y="49" width="38" height="5" rx="2.5" fill="rgba(255,255,255,0.2)"/>
+            <rect x="18" y="57" width="28" height="4" rx="2" fill="rgba(255,255,255,0.12)"/>
+            <!-- Old content blocks: boxy -->
+            <rect x="14" y="78" width="30" height="22" rx="2" fill="rgba(80,80,100,0.4)"/>
+            <rect x="50" y="78" width="30" height="22" rx="2" fill="rgba(80,80,100,0.4)"/>
+            <rect x="14" y="106" width="66" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
+            <rect x="14" y="114" width="50" height="4" rx="2" fill="rgba(255,255,255,0.08)"/>
+            <!-- BEFORE label -->
+            <rect x="14" y="122" width="30" height="6" rx="3" fill="rgba(255,80,80,0.4)"/>
+            <text x="29" y="127" text-anchor="middle" font-size="4.5" fill="rgba(255,150,150,0.9)" font-family="sans-serif">VOOR</text>
+
+            <!-- Arrow between panels -->
+            <circle cx="100" cy="75" r="13" fill="rgba(74,144,217,0.25)" stroke="rgba(74,144,217,0.6)" stroke-width="1.5"/>
+            <path d="M93 75 L100 68 L107 75 M100 68 L100 82" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+            <!-- AFTER panel (right, modern/bright) -->
+            <rect x="110" y="20" width="82" height="110" rx="8" fill="rgba(20,45,90,0.7)" stroke="rgba(74,144,217,0.4)" stroke-width="1.5"/>
+            <!-- New nav -->
+            <rect x="110" y="20" width="82" height="16" rx="8" fill="rgba(13,31,70,0.9)"/>
+            <rect x="110" y="28" width="82" height="8" fill="rgba(13,31,70,0.9)"/>
+            <rect x="116" y="24" width="28" height="6" rx="3" fill="rgba(74,144,217,0.5)"/>
+            <!-- New hero: vibrant blue -->
+            <rect x="116" y="42" width="70" height="30" rx="5" fill="rgba(74,144,217,0.35)" stroke="rgba(74,144,217,0.5)" stroke-width="1"/>
+            <rect x="121" y="49" width="38" height="5" rx="2.5" fill="rgba(255,255,255,0.7)"/>
+            <rect x="121" y="57" width="24" height="4" rx="2" fill="rgba(255,255,255,0.35)"/>
+            <rect x="121" y="63" width="22" height="5" rx="2.5" fill="#4a90d9"/>
+            <!-- New content cards: rounded, fresh -->
+            <rect x="116" y="78" width="30" height="22" rx="5" fill="rgba(74,144,217,0.2)" stroke="rgba(74,144,217,0.35)" stroke-width="1"/>
+            <rect x="152" y="78" width="30" height="22" rx="5" fill="rgba(74,144,217,0.2)" stroke="rgba(74,144,217,0.35)" stroke-width="1"/>
+            <circle cx="131" cy="87" r="5" fill="rgba(74,144,217,0.6)"/>
+            <circle cx="167" cy="87" r="5" fill="rgba(74,144,217,0.6)"/>
+            <rect x="116" y="106" width="66" height="4" rx="2" fill="rgba(255,255,255,0.25)"/>
+            <rect x="116" y="114" width="46" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+            <!-- AFTER label -->
+            <rect x="150" y="122" width="30" height="6" rx="3" fill="rgba(74,144,217,0.4)"/>
+            <text x="165" y="127" text-anchor="middle" font-size="4.5" fill="rgba(160,210,255,0.9)" font-family="sans-serif">NA</text>
+          </svg>
+        </div>
+      </div>
+      <div class="service-detail-content">
+        <span class="section-eyebrow" data-i18n="diensten.redesign.eyebrow">04 — Website Redesign</span>
+        <h3 data-i18n="nav.svc.redesign">Website Redesign</h3>
+        <p data-i18n="diensten.redesign.p1">Heeft uw huidige website een verouderd uiterlijk, laadt hij traag of weet u niet goed hoe u er dingen op kunt aanpassen? Dan is een redesign de meest efficiënte oplossing.</p>
+        <p data-i18n="diensten.redesign.p2">Ik behoud wat al werkt — denk aan uw teksten, uw domein en uw SEO-waarde — en geef uw site een modern jasje dat beter aansluit bij uw huidige bedrijf.</p>
+        <ul class="check-list" style="margin-top:1rem;">
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.redesign.c1">Analyse van uw huidige website</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.redesign.c2">Modern en strak nieuw ontwerp</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.redesign.c3">Betere gebruiksvriendelijkheid en structuur</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.redesign.c4">Verbeterde laadsnelheid</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.redesign.c5">Behoud van bestaande SEO-waarde</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.redesign.c6">Migratie van bestaande inhoud</span></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:1.5rem;" data-i18n="diensten.ask">Stel een vraag</a>
+      </div>
+    </div>
+
+    <div id="hosting" class="service-detail fade-in">
+      <div class="service-detail-img">
+        <!-- Hosting illustration: shield + server stack + uptime -->
+        <div class="service-illus si-hosting" aria-hidden="true">
+          <div class="glow" style="background:#1a6fd9; top:30%;"></div>
+          <svg class="art" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Server racks (left side) -->
+            <rect x="14" y="30" width="68" height="16" rx="5" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <rect x="14" y="50" width="68" height="16" rx="5" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <rect x="14" y="70" width="68" height="16" rx="5" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <rect x="14" y="90" width="68" height="16" rx="5" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <!-- Server status lights -->
+            <circle cx="24" cy="38"  r="3" fill="#6bcb77"/>
+            <circle cx="24" cy="58"  r="3" fill="#6bcb77"/>
+            <circle cx="24" cy="78"  r="3" fill="#6bcb77"/>
+            <circle cx="24" cy="98"  r="3" fill="#ffd93d"/>
+            <!-- Server bars -->
+            <rect x="32" y="35" width="28" height="6" rx="3" fill="rgba(74,144,217,0.4)"/>
+            <rect x="32" y="55" width="36" height="6" rx="3" fill="rgba(74,144,217,0.4)"/>
+            <rect x="32" y="75" width="22" height="6" rx="3" fill="rgba(74,144,217,0.4)"/>
+            <rect x="32" y="95" width="32" height="6" rx="3" fill="rgba(74,144,217,0.4)"/>
+            <!-- Server vent dots -->
+            <circle cx="70" cy="38" r="1.5" fill="rgba(255,255,255,0.2)"/>
+            <circle cx="74" cy="38" r="1.5" fill="rgba(255,255,255,0.2)"/>
+            <circle cx="70" cy="58" r="1.5" fill="rgba(255,255,255,0.2)"/>
+            <circle cx="74" cy="58" r="1.5" fill="rgba(255,255,255,0.2)"/>
+            <circle cx="70" cy="78" r="1.5" fill="rgba(255,255,255,0.2)"/>
+            <circle cx="74" cy="78" r="1.5" fill="rgba(255,255,255,0.2)"/>
+            <circle cx="70" cy="98" r="1.5" fill="rgba(255,255,255,0.15)"/>
+            <circle cx="74" cy="98" r="1.5" fill="rgba(255,255,255,0.15)"/>
+            <!-- Uptime graph (bottom) -->
+            <rect x="14" y="112" width="68" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <text x="18" y="122" font-size="5" fill="rgba(255,255,255,0.4)" font-family="sans-serif">UPTIME</text>
+            <rect x="18" y="124" width="54" height="5" rx="2.5" fill="rgba(74,144,217,0.2)"/>
+            <rect x="18" y="124" width="51" height="5" rx="2.5" fill="rgba(107,203,119,0.7)"/>
+            <text x="72" y="129" text-anchor="end" font-size="5" fill="rgba(107,203,119,0.9)" font-family="sans-serif">99.9%</text>
+
+            <!-- Shield (right, large) -->
+            <path d="M140 20 L175 32 L175 70 Q175 95 140 110 Q105 95 105 70 L105 32 Z" fill="rgba(74,144,217,0.15)" stroke="rgba(74,144,217,0.55)" stroke-width="2"/>
+            <!-- Shield inner glow -->
+            <path d="M140 28 L168 38 L168 68 Q168 88 140 100 Q112 88 112 68 L112 38 Z" fill="rgba(74,144,217,0.1)"/>
+            <!-- Checkmark in shield -->
+            <path d="M125 65 L136 76 L158 52" stroke="#6bcb77" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- Lock icon below shield -->
+            <rect x="128" y="114" width="24" height="18" rx="4" fill="rgba(74,144,217,0.4)" stroke="rgba(74,144,217,0.7)" stroke-width="1.5"/>
+            <path d="M133 114 L133 108 Q133 103 140 103 Q147 103 147 108 L147 114" stroke="rgba(74,144,217,0.8)" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <circle cx="140" cy="122" r="3" fill="rgba(255,255,255,0.6)"/>
+            <!-- SSL badge -->
+            <rect x="154" y="112" width="28" height="12" rx="6" fill="rgba(107,203,119,0.25)" stroke="rgba(107,203,119,0.6)" stroke-width="1"/>
+            <text x="168" y="120" text-anchor="middle" font-size="5.5" fill="rgba(107,203,119,0.9)" font-family="sans-serif" font-weight="bold">SSL ✓</text>
+          </svg>
+        </div>
+      </div>
+      <div class="service-detail-content">
+        <span class="section-eyebrow" data-i18n="diensten.hosting.eyebrow">05 — Hosting &amp; Onderhoud</span>
+        <h3 data-i18n="nav.svc.hosting">Hosting &amp; Onderhoud</h3>
+        <p data-i18n="diensten.hosting.p1">Een website bouwen is één ding — zorgen dat hij online blijft, veilig is en up-to-date is een ander. Ik bied een eenvoudig onderhoudspakket waarbij u nergens naar hoeft om te kijken.</p>
+        <p data-i18n="diensten.hosting.p2">U betaalt een vast bedrag per jaar en ik regel de rest: hosting, back-ups, beveiligingsupdates en kleine aanpassingen wanneer nodig.</p>
+        <ul class="check-list" style="margin-top:1rem;">
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.hosting.c1">Betrouwbare hosting met hoge uptime</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.hosting.c2">SSL-certificaat (het slotje in de browser)</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.hosting.c3">Dagelijkse automatische back-ups</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.hosting.c4">Beveiligingsupdates en monitoring</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.hosting.c5">Kleine tekstwijzigingen inbegrepen</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.hosting.c6">Persoonlijk aanspreekpunt bij vragen</span></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:1.5rem;" data-i18n="diensten.ask">Stel een vraag</a>
+      </div>
+    </div>
+
+    <div id="branding" class="service-detail reverse fade-in">
+      <div class="service-detail-img">
+        <!-- Branding illustration: logo variants + color palette + pen -->
+        <div class="service-illus si-branding" aria-hidden="true">
+          <div class="glow" style="background:#5060d9; left:30%; top:25%;"></div>
+          <svg class="art" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Main logo mockup card (center) -->
+            <rect x="55" y="18" width="90" height="60" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"/>
+            <!-- Logo mark: 4-point star -->
+            <path d="M100 30 L103 40 L113 43 L103 46 L100 56 L97 46 L87 43 L97 40 Z" fill="#4a90d9"/>
+            <path d="M100 30 L103 40 L113 43 L103 46 L100 56 L97 46 L87 43 L97 40 Z" fill="url(#bgl)" opacity="0.5"/>
+            <defs>
+              <linearGradient id="bgl" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="white" stop-opacity="0.6"/>
+                <stop offset="1" stop-color="white" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <!-- Brand name under star -->
+            <rect x="65" y="60" width="70" height="8" rx="4" fill="rgba(255,255,255,0.5)"/>
+            <rect x="75" y="71" width="50" height="5" rx="2.5" fill="rgba(255,255,255,0.2)"/>
+
+            <!-- Color swatches row -->
+            <rect x="14" y="90" width="24" height="24" rx="6" fill="#1a2744"/>
+            <rect x="44" y="90" width="24" height="24" rx="6" fill="#4a90d9"/>
+            <rect x="74" y="90" width="24" height="24" rx="6" fill="#7ab3ff"/>
+            <rect x="104" y="90" width="24" height="24" rx="6" fill="#e8f1fb" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <rect x="134" y="90" width="24" height="24" rx="6" fill="#ffffff" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <!-- Swatch check marks -->
+            <path d="M21 103 L25 107 L31 99" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+            <!-- Font specimen -->
+            <rect x="14" y="120" width="100" height="20" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <text x="22" y="131" font-size="7" fill="rgba(255,255,255,0.6)" font-family="sans-serif" font-weight="bold" letter-spacing="0.5">Aa Bb Cc — Brand Font</text>
+
+            <!-- Pen tool icon (right) -->
+            <g transform="translate(158,18)">
+              <rect width="28" height="56" rx="6" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+              <!-- Pen body -->
+              <rect x="9" y="8" width="10" height="30" rx="5" fill="rgba(74,144,217,0.6)"/>
+              <!-- Pen clip -->
+              <rect x="17" y="6" width="3" height="26" rx="1.5" fill="rgba(74,144,217,0.9)"/>
+              <!-- Pen tip -->
+              <path d="M11 38 L14 48 L17 38 Z" fill="rgba(255,255,255,0.7)"/>
+              <!-- Pen top button -->
+              <circle cx="14" cy="7" r="4" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            </g>
+
+            <!-- File format badges -->
+            <rect x="162" y="82" width="22" height="10" rx="5" fill="rgba(74,144,217,0.35)" stroke="rgba(74,144,217,0.6)" stroke-width="1"/>
+            <text x="173" y="89" text-anchor="middle" font-size="5" fill="rgba(255,255,255,0.8)" font-family="sans-serif">SVG</text>
+            <rect x="162" y="96" width="22" height="10" rx="5" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <text x="173" y="103" text-anchor="middle" font-size="5" fill="rgba(255,255,255,0.8)" font-family="sans-serif">PNG</text>
+            <rect x="162" y="110" width="22" height="10" rx="5" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <text x="173" y="117" text-anchor="middle" font-size="5" fill="rgba(255,255,255,0.8)" font-family="sans-serif">PDF</text>
+          </svg>
+        </div>
+      </div>
+      <div class="service-detail-content">
+        <span class="section-eyebrow" data-i18n="diensten.branding.eyebrow">06 — Logo &amp; Branding</span>
+        <h3 data-i18n="nav.svc.branding">Logo &amp; Branding</h3>
+        <p data-i18n="diensten.branding.p1">Uw logo is het gezicht van uw bedrijf. Het verschijnt op uw website, visitekaartjes, facturen, social media en misschien zelfs op een bestelwagen. Het is dus belangrijk dat het er goed uitziet — overal.</p>
+        <p data-i18n="diensten.branding.p2">Ik ontwerp een logo dat tijdloos en herkenbaar is, en lever een volledig brandingpakket zodat u consistent kunt communiceren in elke situatie.</p>
+        <ul class="check-list" style="margin-top:1rem;">
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.branding.c1">Meerdere logoconcepten ter keuze</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.branding.c2">Kleurpalet en typografie vastgelegd</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.branding.c3">Alle bestandsformaten: SVG, PNG, PDF</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.branding.c4">Versies voor lichte en donkere achtergrond</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.branding.c5">Geschikt voor web én print</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.branding.c6">Volledige eigendomsrechten voor u</span></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:1.5rem;" data-i18n="diensten.ask">Stel een vraag</a>
+      </div>
+    </div>
+
+    <div id="chatbot" class="service-detail fade-in">
+      <div class="service-detail-img">
+        <div class="service-illus si-chatbot" aria-hidden="true">
+          <div class="glow" style="background:#2ab8b0; left:25%; top:20%;"></div>
+          <svg class="art" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Chat window frame -->
+            <rect x="20" y="10" width="160" height="105" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="1.2"/>
+            <!-- Top bar -->
+            <rect x="20" y="10" width="160" height="22" rx="10" fill="rgba(42,184,176,0.18)"/>
+            <rect x="20" y="24" width="160" height="8" fill="rgba(42,184,176,0.18)"/>
+            <!-- Dots -->
+            <circle cx="34" cy="21" r="3.5" fill="rgba(255,255,255,0.25)"/>
+            <circle cx="46" cy="21" r="3.5" fill="rgba(255,255,255,0.25)"/>
+            <circle cx="58" cy="21" r="3.5" fill="rgba(255,255,255,0.25)"/>
+            <!-- Title bar text -->
+            <rect x="80" y="18" width="60" height="7" rx="3.5" fill="rgba(255,255,255,0.2)"/>
+
+            <!-- Bot bubble (left) -->
+            <rect x="30" y="40" width="82" height="18" rx="9" fill="rgba(42,184,176,0.28)" stroke="rgba(42,184,176,0.5)" stroke-width="1"/>
+            <rect x="38" y="46" width="58" height="5" rx="2.5" fill="rgba(255,255,255,0.55)"/>
+            <!-- Bot avatar -->
+            <circle cx="22" cy="49" r="6" fill="rgba(42,184,176,0.35)" stroke="rgba(42,184,176,0.6)" stroke-width="1"/>
+            <path d="M19 49h6M22 46v6" stroke="rgba(255,255,255,0.8)" stroke-width="1.4" stroke-linecap="round"/>
+
+            <!-- User bubble (right) -->
+            <rect x="88" y="64" width="82" height="18" rx="9" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <rect x="96" y="70" width="58" height="5" rx="2.5" fill="rgba(255,255,255,0.35)"/>
+
+            <!-- Bot reply -->
+            <rect x="30" y="88" width="100" height="18" rx="9" fill="rgba(42,184,176,0.28)" stroke="rgba(42,184,176,0.5)" stroke-width="1"/>
+            <rect x="38" y="94" width="76" height="5" rx="2.5" fill="rgba(255,255,255,0.55)"/>
+
+            <!-- Input bar -->
+            <rect x="28" y="122" width="144" height="16" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <rect x="36" y="127" width="80" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+            <circle cx="162" cy="130" r="7" fill="rgba(42,184,176,0.5)" stroke="rgba(42,184,176,0.8)" stroke-width="1"/>
+            <path d="M159 130l3-3 3 3M162 127v6" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="service-detail-content">
+        <span class="section-eyebrow" data-i18n="diensten.chatbot.eyebrow">07 — AI Chatbot</span>
+        <h3 data-i18n="nav.svc.chatbot">AI Chatbot</h3>
+        <p data-i18n="diensten.chatbot.p1">Bezoekers stellen vragen — ook buiten uw openingsuren. Met een op maat getrainde AI-chatbot op uw website beantwoordt u die vragen automatisch, 24/7, zonder dat u zelf iets hoeft te doen.</p>
+        <p data-i18n="diensten.chatbot.p2">De chatbot wordt getraind op informatie over uw bedrijf: uw diensten, prijzen, openingsuren, veelgestelde vragen en meer. Zo krijgen bezoekers altijd een nauwkeurig en relevant antwoord — in uw eigen tone of voice.</p>
+        <ul class="check-list" style="margin-top:1rem;">
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.chatbot.c1">Getraind op uw specifieke bedrijfsinfo</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.chatbot.c2">Beantwoordt vragen 24/7 automatisch</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.chatbot.c3">Vermindert terugkerende e-mails en telefoontjes</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.chatbot.c4">Naadloos geïntegreerd in uw bestaande website</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.chatbot.c5">Aangepaste stijl passend bij uw huisstijl</span></li>
+          <li class="check-item"><span class="check-icon">✓</span> <span data-i18n="diensten.chatbot.c6">Eenvoudig updaten wanneer info verandert</span></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:1.5rem;" data-i18n="diensten.ask">Stel een vraag</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html"><svg width="130" height="33" viewBox="0 0 280 70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><text x="4" y="46" font-family="'Space Grotesk', sans-serif" font-weight="300" font-size="40" fill="#ffffff" letter-spacing="-1">bollens</text><text x="186" y="46" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="40" fill="#7ab3ff" letter-spacing="-1">ify</text><path d="M 180 28 L 182 22 L 184 28 L 190 30 L 184 32 L 182 38 L 180 32 L 174 30 Z" fill="#7ab3ff" opacity="0.85"/></svg></a>
+        <p data-i18n="footer.tagline">Websites die werken. Ik help ondernemers groeien met een professionele online aanwezigheid.</p>
+        <div class="footer-contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:louis@bollensify.com">louis@bollensify.com</a></div>
+        <div class="footer-contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.91 6.91l.76-.76a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:0468373437">0468 37 34 37</a></div>
+        <div class="footer-contact-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="footer.location">Antwerpen, België</span></div>
+      </div>
+      <div class="footer-col"><h4 data-i18n="footer.links">Snelle links</h4><ul><li><a href="index.html" data-i18n="nav.home">Home</a></li><li><a href="diensten.html" data-i18n="nav.services">Diensten</a></li><li><a href="cases.html" data-i18n="nav.portfolio">Cases</a></li><li><a href="over.html" data-i18n="footer.aboutme">Over mij</a></li><li><a href="contact.html" data-i18n="footer.contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4 data-i18n="nav.services">Diensten</h4><ul><li><a href="#website-design" data-i18n="nav.svc.design">Website Design</a></li><li><a href="#webshop" data-i18n="nav.svc.webshop">Webshop</a></li><li><a href="#seo" data-i18n="nav.svc.seo">SEO Optimalisatie</a></li><li><a href="#redesign" data-i18n="nav.svc.redesign">Website Redesign</a></li><li><a href="#hosting" data-i18n="nav.svc.hosting">Hosting &amp; Onderhoud</a></li><li><a href="#branding" data-i18n="nav.svc.branding">Logo &amp; Branding</a></li><li><a href="#chatbot" data-i18n="nav.svc.chatbot">AI Chatbot</a></li></ul></div>
+      <div class="footer-col"><h4 data-i18n="footer.legal">Wettelijk</h4><ul><li><a href="voorwaarden.html" data-i18n="footer.terms">Algemene voorwaarden</a></li><li><a href="privacy.html" data-i18n="footer.privacy">Privacybeleid</a></li><li><a href="unsubscribe.html" data-i18n="footer.unsub">Uitschrijven</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.copy">© 2026 Bollensify – Alle rechten voorbehouden</span>
+      <span><a href="voorwaarden.html" data-i18n="footer.terms">Voorwaarden</a> · <a href="privacy.html" data-i18n="footer.privacy">Privacy</a></span>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+
+<script>
+const TRANSLATIONS = {
+  nl: {
+    'nav.home':'Home','nav.services':'Diensten','nav.portfolio':'Cases','nav.about':'Over','nav.contact':'Neem contact op',
+    'nav.svc.design':'Website Design','nav.svc.webshop':'Webshop','nav.svc.seo':'SEO Optimalisatie','nav.svc.redesign':'Website Redesign','nav.svc.hosting':'Hosting & Onderhoud','nav.svc.branding':'Logo & Branding','nav.svc.chatbot':'AI Chatbot',
+    'footer.tagline':'Websites die werken. Ik help ondernemers in Antwerpen en heel België groeien met een professionele online aanwezigheid.',
+    'footer.location':'Antwerpen, België','footer.links':'Snelle links','footer.aboutme':'Over mij','footer.contact':'Contact','footer.legal':'Wettelijk',
+    'footer.terms':'Algemene voorwaarden','footer.privacy':'Privacybeleid','footer.unsub':'Uitschrijven','footer.copy':'© 2026 Bollensify – Alle rechten voorbehouden',
+    'diensten.hero.title':'Diensten & Prijzen','diensten.hero.sub':'Eenmalige prijs, geen abonnement, geen verborgen kosten.',
+    'diensten.pricing.eyebrow':'Prijspakketten','diensten.pricing.h2':'Kies het pakket dat bij u past','diensten.pricing.subtitle':'Alle prijzen zijn eenmalig — u betaalt één keer, geen maandelijkse kosten.',
+    'diensten.popular':'Populair',
+    'diensten.starter.desc':'Eenmalige prijs · Ideaal voor starters die snel online willen.','diensten.starter.f1':'One-page website (5 secties)','diensten.starter.f2':'Mobiel-vriendelijk (responsive)','diensten.starter.f3':'Contactformulier','diensten.starter.f4':'Basis SEO-optimalisatie','diensten.starter.f5':'Gratis domeinnaam (1 jaar)','diensten.starter.f6':'Oplevering binnen 7 werkdagen',
+    'diensten.pro.desc':"Eenmalige prijs · Voor bedrijven met meerdere pagina's.",'diensten.pro.f1':"Multi-page website (tot 5 pagina's)",'diensten.pro.f2':"SEO-optimalisatie (alle pagina's)",'diensten.pro.f3':'Google Maps integratie','diensten.pro.f4':'Snelle laadtijden (geoptimaliseerd)','diensten.pro.f5':'1 jaar gratis hosting inbegrepen','diensten.pro.f6':'Oplevering binnen 14 werkdagen','diensten.pro.f7':'30 dagen aanpassingen na oplevering',
+    'diensten.biz.desc':'Eenmalige prijs · Met webshop of boekingssysteem.','diensten.biz.f1':'Alles van Professional','diensten.biz.f2':'Webshop of boekingssysteem','diensten.biz.f3':"Tot 10 pagina's",'diensten.biz.f4':'E-commerce integratie','diensten.biz.f5':'60 dagen aanpassingen na oplevering',
+    'diensten.detail.eyebrow':'Meer informatie','diensten.detail.h2':'Wat houdt elke dienst in?','diensten.ask':'Stel een vraag',
+    'diensten.design.eyebrow':'01 — Website Design','diensten.design.p1':'Uw website is vaak de eerste indruk die iemand van uw bedrijf krijgt. Ik ontwerp een site die er professioneel uitziet, snel laadt en goed werkt op elk toestel — van smartphone tot desktop.','diensten.design.p2':'Elk project start met een gesprek over uw doelen, uw klanten en uw sector. Op basis daarvan bouw ik een website die echt bij u past, niet een generiek template.','diensten.design.c1':'Op maat ontworpen — geen templates','diensten.design.c2':'Volledig mobiel-vriendelijk (responsive)','diensten.design.c3':'Snel geladen — geoptimaliseerde afbeeldingen en code','diensten.design.c4':'Contactformulier inbegrepen','diensten.design.c5':'Basis SEO-structuur vanaf het begin','diensten.design.c6':'Oplevering binnen de afgesproken termijn',
+    'diensten.webshop.eyebrow':'02 — Webshop','diensten.webshop.p1':'Wilt u producten of diensten online verkopen? Ik bouw een webshop die er verzorgd uitziet, eenvoudig te beheren is en waarbij uw klanten vlot kunnen bestellen en betalen.','diensten.webshop.p2':'U hoeft geen technische kennis te hebben. Na oplevering laat ik u zien hoe u zelf producten kunt toevoegen, bestellingen kunt opvolgen en de inhoud kunt beheren.','diensten.webshop.c1':"Overzichtelijke productpagina's",'diensten.webshop.c2':'Veilige online betaling (Mollie, Stripe of Bancontact)','diensten.webshop.c3':'Winkelwagen en checkout op maat','diensten.webshop.c4':'Automatische orderbevestiging per e-mail','diensten.webshop.c5':'Eenvoudig beheer via dashboard','diensten.webshop.c6':'BTW en verzendkosten configureerbaar',
+    'diensten.seo.eyebrow':'03 — SEO Optimalisatie','diensten.seo.p1':'SEO staat voor zoekmachineoptimalisatie — het zorgt dat uw website hoger verschijnt in Google wanneer mensen zoeken naar wat u aanbiedt. Meer zichtbaarheid betekent meer bezoekers, zonder te betalen voor advertenties.','diensten.seo.p2':"Ik bekijk uw volledige website technisch én inhoudelijk: welke zoekwoorden relevant zijn, hoe snel uw pagina's laden en of Google alles goed kan lezen.",'diensten.seo.c1':'Zoekwoordenonderzoek voor uw sector','diensten.seo.c2':'Optimalisatie van titels, beschrijvingen en koppen','diensten.seo.c3':'Technische SEO: laadsnelheid, mobiel, veiligheid','diensten.seo.c4':'Google Search Console instellen en koppelen','diensten.seo.c5':'Lokale SEO voor vindbaarheid in uw regio','diensten.seo.c6':'Duidelijk rapport met wat er gedaan is',
+    'diensten.redesign.eyebrow':'04 — Website Redesign','diensten.redesign.p1':'Heeft uw huidige website een verouderd uiterlijk, laadt hij traag of weet u niet goed hoe u er dingen op kunt aanpassen? Dan is een redesign de meest efficiënte oplossing.','diensten.redesign.p2':'Ik behoud wat al werkt — denk aan uw teksten, uw domein en uw SEO-waarde — en geef uw site een modern jasje dat beter aansluit bij uw huidige bedrijf.','diensten.redesign.c1':'Analyse van uw huidige website','diensten.redesign.c2':'Modern en strak nieuw ontwerp','diensten.redesign.c3':'Betere gebruiksvriendelijkheid en structuur','diensten.redesign.c4':'Verbeterde laadsnelheid','diensten.redesign.c5':'Behoud van bestaande SEO-waarde','diensten.redesign.c6':'Migratie van bestaande inhoud',
+    'diensten.hosting.eyebrow':'05 — Hosting & Onderhoud','diensten.hosting.p1':'Een website bouwen is één ding — zorgen dat hij online blijft, veilig is en up-to-date is een ander. Ik bied een eenvoudig onderhoudspakket waarbij u nergens naar hoeft om te kijken.','diensten.hosting.p2':'U betaalt een vast bedrag per jaar en ik regel de rest: hosting, back-ups, beveiligingsupdates en kleine aanpassingen wanneer nodig.','diensten.hosting.c1':'Betrouwbare hosting met hoge uptime','diensten.hosting.c2':'SSL-certificaat (het slotje in de browser)','diensten.hosting.c3':'Dagelijkse automatische back-ups','diensten.hosting.c4':'Beveiligingsupdates en monitoring','diensten.hosting.c5':'Kleine tekstwijzigingen inbegrepen','diensten.hosting.c6':'Persoonlijk aanspreekpunt bij vragen',
+    'diensten.branding.eyebrow':'06 — Logo & Branding','diensten.branding.p1':'Uw logo is het gezicht van uw bedrijf. Het verschijnt op uw website, visitekaartjes, facturen, social media en misschien zelfs op een bestelwagen. Het is dus belangrijk dat het er goed uitziet — overal.','diensten.branding.p2':'Ik ontwerp een logo dat tijdloos en herkenbaar is, en lever een volledig brandingpakket zodat u consistent kunt communiceren in elke situatie.','diensten.branding.c1':'Meerdere logoconcepten ter keuze','diensten.branding.c2':'Kleurpalet en typografie vastgelegd','diensten.branding.c3':'Alle bestandsformaten: SVG, PNG, PDF','diensten.branding.c4':'Versies voor lichte en donkere achtergrond','diensten.branding.c5':'Geschikt voor web én print','diensten.branding.c6':'Volledige eigendomsrechten voor u',
+    'diensten.chatbot.eyebrow':'07 — AI Chatbot','diensten.chatbot.p1':'Bezoekers stellen vragen — ook buiten uw openingsuren. Met een op maat getrainde AI-chatbot op uw website beantwoordt u die vragen automatisch, 24/7, zonder dat u zelf iets hoeft te doen.','diensten.chatbot.p2':'De chatbot wordt getraind op informatie over uw bedrijf: uw diensten, prijzen, openingsuren, veelgestelde vragen en meer. Zo krijgen bezoekers altijd een nauwkeurig en relevant antwoord — in uw eigen tone of voice.','diensten.chatbot.c1':'Getraind op uw specifieke bedrijfsinfo','diensten.chatbot.c2':'Beantwoordt vragen 24/7 automatisch','diensten.chatbot.c3':'Vermindert terugkerende e-mails en telefoontjes','diensten.chatbot.c4':'Naadloos geïntegreerd in uw bestaande website','diensten.chatbot.c5':'Aangepaste stijl passend bij uw huisstijl','diensten.chatbot.c6':'Eenvoudig updaten wanneer info verandert',
+  },
+  fr: {
+    'nav.home':'Accueil','nav.services':'Services','nav.portfolio':'Cases','nav.about':'À propos','nav.contact':'Contactez-nous',
+    'nav.svc.design':'Conception de site','nav.svc.webshop':'Boutique en ligne','nav.svc.seo':'Optimisation SEO','nav.svc.redesign':'Refonte de site','nav.svc.hosting':'Hébergement & Maintenance','nav.svc.branding':'Logo & Identité','nav.svc.chatbot':'Chatbot IA',
+    'footer.tagline':"Des sites qui travaillent. J'aide les entrepreneurs à Anvers et partout en Belgique à développer leur présence en ligne.",
+    'footer.location':'Anvers, Belgique','footer.links':'Liens rapides','footer.aboutme':'À propos','footer.contact':'Contact','footer.legal':'Légal',
+    'footer.terms':'Conditions générales','footer.privacy':'Politique de confidentialité','footer.unsub':'Se désinscrire','footer.copy':'© 2026 Bollensify – Tous droits réservés',
+    'diensten.hero.title':'Services & Tarifs','diensten.hero.sub':"Prix unique, pas d'abonnement, pas de frais cachés.",
+    'diensten.pricing.eyebrow':'Formules tarifaires','diensten.pricing.h2':'Choisissez la formule qui vous convient','diensten.pricing.subtitle':'Tous les prix sont uniques — vous payez une fois, pas de frais mensuels.',
+    'diensten.popular':'Populaire',
+    'diensten.starter.desc':"Prix unique · Idéal pour les starters qui veulent être en ligne rapidement.",'diensten.starter.f1':'Site one-page (5 sections)','diensten.starter.f2':'Compatible mobile (responsive)','diensten.starter.f3':'Formulaire de contact','diensten.starter.f4':'Optimisation SEO de base','diensten.starter.f5':'Nom de domaine gratuit (1 an)','diensten.starter.f6':'Livraison en 7 jours ouvrables',
+    'diensten.pro.desc':"Prix unique · Pour les entreprises avec plusieurs pages.",'diensten.pro.f1':"Site multi-pages (jusqu'à 5 pages)",'diensten.pro.f2':'Optimisation SEO (toutes les pages)','diensten.pro.f3':'Intégration Google Maps','diensten.pro.f4':'Chargement rapide (optimisé)','diensten.pro.f5':"1 an d'hébergement gratuit inclus",'diensten.pro.f6':'Livraison en 14 jours ouvrables','diensten.pro.f7':"30 jours d'ajustements après livraison",
+    'diensten.biz.desc':'Prix unique · Avec boutique en ligne ou système de réservation.','diensten.biz.f1':'Tout de Professional','diensten.biz.f2':'Boutique en ligne ou système de réservation','diensten.biz.f3':"Jusqu'à 10 pages",'diensten.biz.f4':'Intégration e-commerce','diensten.biz.f5':"60 jours d'ajustements après livraison",
+    'diensten.detail.eyebrow':"Plus d'informations",'diensten.detail.h2':'En quoi consiste chaque service ?','diensten.ask':'Poser une question',
+    'diensten.design.eyebrow':'01 — Conception de site','diensten.design.p1':"Votre site web est souvent la première impression que quelqu'un a de votre entreprise. Je conçois un site professionnel, rapide et fonctionnel sur tous les appareils — du smartphone au bureau.",'diensten.design.p2':"Chaque projet commence par une conversation sur vos objectifs, vos clients et votre secteur. Sur cette base, je construis un site qui vous correspond vraiment, pas un template générique.",'diensten.design.c1':'Conçu sur mesure — pas de templates','diensten.design.c2':'Entièrement compatible mobile (responsive)','diensten.design.c3':'Chargement rapide — images et code optimisés','diensten.design.c4':'Formulaire de contact inclus','diensten.design.c5':'Structure SEO de base dès le départ','diensten.design.c6':'Livraison dans les délais convenus',
+    'diensten.webshop.eyebrow':'02 — Boutique en ligne','diensten.webshop.p1':"Vous souhaitez vendre des produits ou services en ligne ? Je crée une boutique soignée, facile à gérer et où vos clients peuvent commander et payer facilement.",'diensten.webshop.p2':"Aucune connaissance technique requise. Après livraison, je vous montre comment ajouter des produits, suivre les commandes et gérer le contenu vous-même.",'diensten.webshop.c1':'Pages produits claires','diensten.webshop.c2':'Paiement en ligne sécurisé (Mollie, Stripe ou Bancontact)','diensten.webshop.c3':'Panier et checkout personnalisés','diensten.webshop.c4':'Confirmation de commande automatique par e-mail','diensten.webshop.c5':'Gestion simple via tableau de bord','diensten.webshop.c6':'TVA et frais de port configurables',
+    'diensten.seo.eyebrow':'03 — Optimisation SEO','diensten.seo.p1':"Le SEO fait apparaître votre site plus haut sur Google quand les gens recherchent ce que vous proposez. Plus de visibilité signifie plus de visiteurs, sans payer pour des publicités.",'diensten.seo.p2':"J'examine votre site web sur le plan technique et éditorial : quels mots-clés sont pertinents, la vitesse de chargement et si Google peut tout lire correctement.",'diensten.seo.c1':'Recherche de mots-clés pour votre secteur','diensten.seo.c2':'Optimisation des titres, descriptions et titres','diensten.seo.c3':'SEO technique : vitesse, mobile, sécurité','diensten.seo.c4':'Configuration et liaison de Google Search Console','diensten.seo.c5':'SEO local pour la visibilité dans votre région','diensten.seo.c6':'Rapport clair sur ce qui a été fait',
+    'diensten.redesign.eyebrow':'04 — Refonte de site','diensten.redesign.p1':"Votre site actuel a un aspect dépassé, se charge lentement ou vous ne savez pas comment y apporter des modifications ? Une refonte est la solution la plus efficace.",'diensten.redesign.p2':"Je conserve ce qui fonctionne déjà — vos textes, votre domaine et votre valeur SEO — et donne à votre site une apparence moderne qui correspond mieux à votre entreprise actuelle.",'diensten.redesign.c1':'Analyse de votre site actuel','diensten.redesign.c2':'Nouveau design moderne et épuré','diensten.redesign.c3':'Meilleure convivialité et structure','diensten.redesign.c4':'Vitesse de chargement améliorée','diensten.redesign.c5':'Conservation de la valeur SEO existante','diensten.redesign.c6':'Migration du contenu existant',
+    'diensten.hosting.eyebrow':'05 — Hébergement & Maintenance','diensten.hosting.p1':"Créer un site web est une chose — s'assurer qu'il reste en ligne, sécurisé et à jour en est une autre. Je propose un forfait de maintenance simple où vous n'avez rien à surveiller.",'diensten.hosting.p2':"Vous payez un montant fixe par an et je m'occupe du reste : hébergement, sauvegardes, mises à jour de sécurité et petits ajustements si nécessaire.",'diensten.hosting.c1':'Hébergement fiable avec haute disponibilité','diensten.hosting.c2':'Certificat SSL (le cadenas dans le navigateur)','diensten.hosting.c3':'Sauvegardes automatiques quotidiennes','diensten.hosting.c4':'Mises à jour de sécurité et surveillance','diensten.hosting.c5':'Petites modifications de texte incluses','diensten.hosting.c6':'Interlocuteur personnel pour vos questions',
+    'diensten.branding.eyebrow':'06 — Logo & Identité','diensten.branding.p1':"Votre logo est le visage de votre entreprise. Il apparaît sur votre site, vos cartes de visite, vos factures, les réseaux sociaux et peut-être même sur un véhicule. Il est donc important qu'il soit beau — partout.",'diensten.branding.p2':"Je conçois un logo intemporel et reconnaissable, et je fournis un kit de branding complet pour que vous puissiez communiquer de manière cohérente dans toutes les situations.",'diensten.branding.c1':'Plusieurs concepts de logo au choix','diensten.branding.c2':'Palette de couleurs et typographie définies','diensten.branding.c3':'Tous les formats : SVG, PNG, PDF','diensten.branding.c4':'Versions pour fond clair et fond sombre','diensten.branding.c5':"Adapté au web et à l'impression",'diensten.branding.c6':'Droits de propriété complets pour vous',
+    'diensten.chatbot.eyebrow':'07 — Chatbot IA','diensten.chatbot.p1':"Les visiteurs posent des questions — même en dehors de vos heures d'ouverture. Avec un chatbot IA entraîné sur mesure sur votre site, vous répondez automatiquement à ces questions, 24h/24 et 7j/7.",'diensten.chatbot.p2':"Le chatbot est formé sur des informations sur votre entreprise : vos services, tarifs, horaires, questions fréquentes et plus. Ainsi, les visiteurs obtiennent toujours une réponse précise et pertinente — dans votre propre style.",'diensten.chatbot.c1':'Formé sur les informations spécifiques de votre entreprise','diensten.chatbot.c2':"Répond aux questions 24h/24, 7j/7 automatiquement",'diensten.chatbot.c3':'Réduit les e-mails et appels répétitifs','diensten.chatbot.c4':'Intégré de manière transparente dans votre site existant','diensten.chatbot.c5':'Style personnalisé correspondant à votre identité visuelle','diensten.chatbot.c6':'Mise à jour facile lorsque les infos changent',
+  },
+  en: {
+    'nav.home':'Home','nav.services':'Services','nav.portfolio':'Cases','nav.about':'About','nav.contact':'Get in touch',
+    'nav.svc.design':'Website Design','nav.svc.webshop':'Webshop','nav.svc.seo':'SEO Optimisation','nav.svc.redesign':'Website Redesign','nav.svc.hosting':'Hosting & Maintenance','nav.svc.branding':'Logo & Branding','nav.svc.chatbot':'AI Chatbot',
+    'footer.tagline':'Websites that work. I help entrepreneurs in Antwerp and across Belgium grow with a professional online presence.',
+    'footer.location':'Antwerp, Belgium','footer.links':'Quick links','footer.aboutme':'About me','footer.contact':'Contact','footer.legal':'Legal',
+    'footer.terms':'Terms & Conditions','footer.privacy':'Privacy Policy','footer.unsub':'Unsubscribe','footer.copy':'© 2026 Bollensify – All rights reserved',
+    'diensten.hero.title':'Services & Pricing','diensten.hero.sub':'One-time price, no subscription, no hidden costs.',
+    'diensten.pricing.eyebrow':'Pricing packages','diensten.pricing.h2':'Choose the package that suits you','diensten.pricing.subtitle':'All prices are one-time — you pay once, no monthly fees.',
+    'diensten.popular':'Popular',
+    'diensten.starter.desc':'One-time price · Ideal for starters who want to get online quickly.','diensten.starter.f1':'One-page website (5 sections)','diensten.starter.f2':'Mobile-friendly (responsive)','diensten.starter.f3':'Contact form','diensten.starter.f4':'Basic SEO optimisation','diensten.starter.f5':'Free domain name (1 year)','diensten.starter.f6':'Delivery within 7 business days',
+    'diensten.pro.desc':'One-time price · For businesses with multiple pages.','diensten.pro.f1':'Multi-page website (up to 5 pages)','diensten.pro.f2':'SEO optimisation (all pages)','diensten.pro.f3':'Google Maps integration','diensten.pro.f4':'Fast loading times (optimised)','diensten.pro.f5':'1 year free hosting included','diensten.pro.f6':'Delivery within 14 business days','diensten.pro.f7':'30 days of adjustments after delivery',
+    'diensten.biz.desc':'One-time price · With webshop or booking system.','diensten.biz.f1':'Everything from Professional','diensten.biz.f2':'Webshop or booking system','diensten.biz.f3':'Up to 10 pages','diensten.biz.f4':'E-commerce integration','diensten.biz.f5':'60 days of adjustments after delivery',
+    'diensten.detail.eyebrow':'More information','diensten.detail.h2':'What does each service include?','diensten.ask':'Ask a question',
+    'diensten.design.eyebrow':'01 — Website Design','diensten.design.p1':"Your website is often the first impression someone gets of your business. I design a site that looks professional, loads fast and works well on every device — from smartphone to desktop.",'diensten.design.p2':"Every project starts with a conversation about your goals, your customers and your sector. Based on that, I build a website that truly fits you, not a generic template.",'diensten.design.c1':'Custom designed — no templates','diensten.design.c2':'Fully mobile-friendly (responsive)','diensten.design.c3':'Fast loading — optimised images and code','diensten.design.c4':'Contact form included','diensten.design.c5':'Basic SEO structure from the start','diensten.design.c6':'Delivery within the agreed timeline',
+    'diensten.webshop.eyebrow':'02 — Webshop','diensten.webshop.p1':"Want to sell products or services online? I build a webshop that looks polished, is easy to manage and lets your customers order and pay smoothly.",'diensten.webshop.p2':"No technical knowledge required. After delivery, I show you how to add products yourself, track orders and manage the content.",'diensten.webshop.c1':'Clear product pages','diensten.webshop.c2':'Secure online payment (Mollie, Stripe or Bancontact)','diensten.webshop.c3':'Custom shopping cart and checkout','diensten.webshop.c4':'Automatic order confirmation by email','diensten.webshop.c5':'Easy management via dashboard','diensten.webshop.c6':'VAT and shipping costs configurable',
+    'diensten.seo.eyebrow':'03 — SEO Optimisation','diensten.seo.p1':"SEO stands for search engine optimisation — it makes your website appear higher in Google when people search for what you offer. More visibility means more visitors, without paying for ads.",'diensten.seo.p2':"I review your entire website technically and content-wise: which keywords are relevant, how fast your pages load and whether Google can read everything properly.",'diensten.seo.c1':'Keyword research for your sector','diensten.seo.c2':'Optimisation of titles, descriptions and headings','diensten.seo.c3':'Technical SEO: loading speed, mobile, security','diensten.seo.c4':'Google Search Console setup and linking','diensten.seo.c5':'Local SEO for visibility in your region','diensten.seo.c6':'Clear report of what was done',
+    'diensten.redesign.eyebrow':'04 — Website Redesign','diensten.redesign.p1':"Does your current website look outdated, load slowly or are you not sure how to make changes to it? A redesign is the most efficient solution.",'diensten.redesign.p2':"I keep what already works — your texts, your domain and your SEO value — and give your site a modern look that better matches your current business.",'diensten.redesign.c1':'Analysis of your current website','diensten.redesign.c2':'Modern and clean new design','diensten.redesign.c3':'Better usability and structure','diensten.redesign.c4':'Improved loading speed','diensten.redesign.c5':'Preservation of existing SEO value','diensten.redesign.c6':'Migration of existing content',
+    'diensten.hosting.eyebrow':'05 — Hosting & Maintenance','diensten.hosting.p1':"Building a website is one thing — keeping it online, secure and up to date is another. I offer a simple maintenance package where you don't have to worry about anything.",'diensten.hosting.p2':"You pay a fixed amount per year and I handle the rest: hosting, backups, security updates and small changes when needed.",'diensten.hosting.c1':'Reliable hosting with high uptime','diensten.hosting.c2':'SSL certificate (the padlock in the browser)','diensten.hosting.c3':'Daily automatic backups','diensten.hosting.c4':'Security updates and monitoring','diensten.hosting.c5':'Small text changes included','diensten.hosting.c6':'Personal point of contact for questions',
+    'diensten.branding.eyebrow':'06 — Logo & Branding','diensten.branding.p1':"Your logo is the face of your business. It appears on your website, business cards, invoices, social media and maybe even on a delivery van. So it's important it looks good — everywhere.",'diensten.branding.p2':"I design a timeless and recognisable logo, and deliver a complete branding package so you can communicate consistently in every situation.",'diensten.branding.c1':'Multiple logo concepts to choose from','diensten.branding.c2':'Colour palette and typography defined','diensten.branding.c3':'All file formats: SVG, PNG, PDF','diensten.branding.c4':'Versions for light and dark backgrounds','diensten.branding.c5':'Suitable for web and print','diensten.branding.c6':'Full ownership rights for you',
+    'diensten.chatbot.eyebrow':'07 — AI Chatbot','diensten.chatbot.p1':"Visitors ask questions — even outside your opening hours. With a custom-trained AI chatbot on your website, you answer those questions automatically, 24/7, without doing anything yourself.",'diensten.chatbot.p2':"The chatbot is trained on information about your business: your services, prices, opening hours, frequently asked questions and more. So visitors always get an accurate and relevant answer — in your own tone of voice.",'diensten.chatbot.c1':'Trained on your specific business information','diensten.chatbot.c2':'Answers questions 24/7 automatically','diensten.chatbot.c3':'Reduces repetitive emails and phone calls','diensten.chatbot.c4':'Seamlessly integrated into your existing website','diensten.chatbot.c5':'Custom style matching your brand identity','diensten.chatbot.c6':'Easy to update when information changes',
+  }
+};
+function applyLang(lang) {
+  const t = TRANSLATIONS[lang] || TRANSLATIONS['nl'];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = t[el.dataset.i18n]; if (v === undefined) return;
+    const hasChildren = [...el.childNodes].some(n => n.nodeType === 1);
+    if (hasChildren) { const tn = [...el.childNodes].find(n => n.nodeType === 3); if (tn) tn.textContent = v; else el.insertBefore(document.createTextNode(v), el.firstChild); }
+    else { el.textContent = v; }
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+  document.documentElement.lang = lang;
+  try { localStorage.setItem('bollensify-lang', lang); } catch(e) {}
+}
+document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => applyLang(btn.dataset.lang)));
+(function() { let s='nl'; try{s=localStorage.getItem('bollensify-lang')||'nl';}catch(e){} if(s!=='nl') applyLang(s); })();
+</script>
+</body>
+</html>
